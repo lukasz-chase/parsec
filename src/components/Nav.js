@@ -56,7 +56,7 @@ const NavComponent = styled.div`
   display: flex;
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Hyades.jpg/1200px-Hyades.jpg");
   justify-content: center;
-  color: yellow;
+  color: #ffe81f;
   .hamburgerMenu {
     display: flex;
     flex-direction: column;
@@ -79,6 +79,7 @@ const NavComponent = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+
       z-index: 5;
       ul {
         height: 100%;
@@ -92,7 +93,14 @@ const NavComponent = styled.div`
           display: flex;
           justify-content: center;
           list-style: none;
-          padding: 1rem 0rem;
+          padding: 2rem 0rem;
+          font-size: 1.5rem;
+          &:hover {
+            cursor: pointer;
+          }
+          @media screen and (max-height: 600px) {
+            padding: 1rem 0rem;
+          }
         }
       }
     }
@@ -102,6 +110,7 @@ const NavComponent = styled.div`
     text-transform: uppercase;
     display: flex;
     align-items: center;
+    font-size: 2rem;
   }
 `;
 
