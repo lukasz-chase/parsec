@@ -4,13 +4,19 @@ import styled from "styled-components";
 //icons
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
+import SearchIcon from "@material-ui/icons/Search";
 //input
 import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
 //router
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Nav = () => {
   const [openMenu, SetOpenMenu] = useState(false);
+  //get the current location
+  const location = useLocation();
+  console.log(location.pathname);
   return (
     <NavComponent>
       <div className="hamburgerMenu">
@@ -41,46 +47,67 @@ const Nav = () => {
         >
           <ul>
             <li>
-              <Link to="/people" className="link">
+              <Link
+                to="/characters"
+                className="nav-link"
+                style={{
+                  color:
+                    location.pathname === "/characters"
+                      ? "orange"
+                      : "#b7e4f9ff",
+                }}
+              >
                 People
               </Link>
             </li>
             <li>
-              <Link to="/films" className="link">
+              <Link
+                to="/locations"
+                className="nav-link"
+                style={{
+                  color:
+                    location.pathname === "/locations" ? "orange" : "#b7e4f9ff",
+                }}
+              >
                 Films
               </Link>
             </li>
             <li>
-              <Link to="/starShips" className="link">
+              <Link
+                to="/episodes"
+                className="nav-link"
+                style={{
+                  color:
+                    location.pathname === "/episodes" ? "orange" : "#b7e4f9ff",
+                }}
+              >
                 Star ships
-              </Link>
-            </li>
-            <li>
-              <Link to="/vehicles" className="link">
-                Vehicles
-              </Link>
-            </li>
-            <li>
-              <Link to="/species" className="link">
-                Species
-              </Link>
-            </li>
-            <li>
-              <Link to="/planets" className="link">
-                Planets
               </Link>
             </li>
           </ul>
         </div>
       </div>
       <div className="navLogo">
-        <Link to="/" className="link">
+        <Link to="/" className="link" style={{ color: "#97ce4c" }}>
           parsec
         </Link>
       </div>
-      <div className="nav-input">
-        <TextField id="outlined-basic" label="Search" className="input-field" />
-      </div>
+      {/* <div className="nav-input">
+        <TextField
+          id="standard-adornment-password"
+          label="Search"
+          color="secondary"
+          className="input-field"
+          size="small"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+      </div> */}
     </NavComponent>
   );
 };
@@ -88,11 +115,10 @@ const Nav = () => {
 const NavComponent = styled.div`
   position: fixed;
   width: 100%;
-  height: 3rem;
+  height: 5rem;
   display: flex;
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Hyades.jpg/1200px-Hyades.jpg");
   justify-content: center;
-  color: #ffe81f;
+  color: #97ce4c;
   z-index: 6;
   .hamburgerMenu {
     display: flex;
@@ -108,10 +134,7 @@ const NavComponent = styled.div`
       }
     }
     .hamburgerMenu-list {
-      background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Hyades.jpg/1200px-Hyades.jpg");
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
+      background-color: #97ce4c;
       min-height: 95vh;
       width: 15rem;
       display: flex;
@@ -126,6 +149,7 @@ const NavComponent = styled.div`
         justify-content: center;
         flex-direction: column;
         li {
+          color: #b7e4f9ff;
           width: 100%;
           display: flex;
           justify-content: center;
@@ -141,24 +165,32 @@ const NavComponent = styled.div`
         }
       }
     }
+    .nav-link {
+      text-decoration: none;
+      color: #126388;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   .navLogo {
-    flex: 1;
+    flex: 2.5;
     text-transform: uppercase;
     display: flex;
     align-items: center;
-    font-size: 2rem;
+    font-size: 3rem;
+    font-weight: bold;
   }
-  .nav-input {
+  /* .nav-input {
     flex: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 0rem 1rem;
     .input-field {
-      background-color: gray;
+      background-color: white;
     }
-  }
+  } */
 `;
 
 export default Nav;

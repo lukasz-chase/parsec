@@ -9,19 +9,16 @@ import Footer from "./components/Footer";
 import { Route } from "react-router-dom";
 //pages
 import HomePage from "./pages/HomePage";
+import PeoplePage from "./pages/PeoplePage";
 
 function App() {
   const theme = createMuiTheme({
     palette: {
       primary: {
-        light: "#fff06c",
-        main: "#ffe81f",
-        dark: "#d2bc00",
+        main: "#97ce4c",
       },
       secondary: {
-        light: "#6c7bff",
-        main: "#1f36ff",
-        dark: "#0016d2",
+        main: "#B7E4F9FF",
       },
     },
   });
@@ -32,6 +29,9 @@ function App() {
         <Nav />
         <Route path="/" exact>
           <HomePage />
+        </Route>
+        <Route path="/characters" exact>
+          <PeoplePage />
         </Route>
         <Footer />
       </ThemeProvider>

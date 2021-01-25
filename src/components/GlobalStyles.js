@@ -10,11 +10,13 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
 }
 body{
-    background-color:black;
+    font-family: 'Roboto', sans-serif;
+    background-image: url("https://images6.alphacoders.com/909/thumb-1920-909641.png");
 }
 .link{
     text-decoration:none;
-    color:#ffe81f;
+    color:#B7E4F9FF;
+    text-shadow:1px 1px black;
 }
 `;
 

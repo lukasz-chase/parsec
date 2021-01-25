@@ -5,48 +5,39 @@ import styled from "styled-components";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
-import YouTubeIcon from "@material-ui/icons/YouTube";
 
 const Footer = () => {
   return (
     <FooterComponent>
-      <div className="footer-text">follow star wars:</div>
+      <div className="footer-text">follow rick and morty:</div>
       <div className="footer-icons">
         <a
-          href="https://www.facebook.com/StarWars"
+          href="https://www.facebook.com/RickandMorty/"
           target="_blank"
           rel="noreferrer"
         >
           <FacebookIcon className="icon" />
         </a>
         <a
-          href="https://www.instagram.com/starwars/"
+          href="https://www.instagram.com/rickandmorty/"
           target="_blank"
           rel="noreferrer"
         >
           <InstagramIcon className="icon" />
         </a>
-        <a href="https://twitter.com/starwars" target="_blank" rel="noreferrer">
-          <TwitterIcon className="icon" />
-        </a>
         <a
-          href="https://www.youtube.com/user/starwars/"
+          href="https://twitter.com/rickandmorty"
           target="_blank"
           rel="noreferrer"
         >
-          <YouTubeIcon className="icon" />
+          <TwitterIcon className="icon" />
         </a>
-      </div>
-      <div className="footer-rights">
-        TM and © Lucasfilm Ltd. All Rights Reserved
       </div>
       <div className="footer-moreInfo">
         <span>Terms of Use</span>
         <span>Additional Content Information</span>
         <span>Privacy Policy</span>
         <span>Children's Online Privacy Policy</span>
-        <span>Star Wars at shopDisney</span>
-        <span>Star Wars Helpdesk</span>
         <span>Interest-Based Ads</span>
       </div>
     </FooterComponent>
@@ -75,6 +66,10 @@ const FooterComponent = styled.div`
     }
     .icon {
       margin: 0rem 1rem;
+      transition: 0.2s ease-in all;
+      &:hover {
+        color: #b4b4b4;
+      }
     }
   }
   .footer-moreInfo {
