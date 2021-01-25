@@ -4,6 +4,8 @@ import styled from "styled-components";
 //icons
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
+//router
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [openMenu, SetOpenMenu] = useState(false);
@@ -36,33 +38,64 @@ const Nav = () => {
           }}
         >
           <ul>
-            <li>People</li>
-            <li>Films</li>
-            <li>Star ships</li>
-            <li>Vehicles</li>
-            <li>Species</li>
-            <li>Planets</li>
+            <li>
+              <Link to="/people" className="link">
+                People
+              </Link>
+            </li>
+            <li>
+              <Link to="/films" className="link">
+                Films
+              </Link>
+            </li>
+            <li>
+              <Link to="/starShips" className="link">
+                Star ships
+              </Link>
+            </li>
+            <li>
+              <Link to="/vehicles" className="link">
+                Vehicles
+              </Link>
+            </li>
+            <li>
+              <Link to="/species" className="link">
+                Species
+              </Link>
+            </li>
+            <li>
+              <Link to="/planets" className="link">
+                Planets
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
-      <div className="navLogo">parsec</div>
+      <div className="navLogo">
+        <Link to="/" className="link">
+          parsec
+        </Link>
+      </div>
     </NavComponent>
   );
 };
 
 const NavComponent = styled.div`
+  position: fixed;
   width: 100%;
   height: 3rem;
   display: flex;
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Hyades.jpg/1200px-Hyades.jpg");
   justify-content: center;
   color: #ffe81f;
+  z-index: 6;
   .hamburgerMenu {
     display: flex;
     flex-direction: column;
     flex: 4;
     .hamburgerMenu-icon {
-      padding: 4px;
+      padding-top: 5px;
+      padding-left: 15px;
       .icon {
         &:hover {
           cursor: pointer;
@@ -79,7 +112,6 @@ const NavComponent = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-
       z-index: 5;
       ul {
         height: 100%;

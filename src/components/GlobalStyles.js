@@ -6,6 +6,16 @@ const GlobalStyles = createGlobalStyle`
     padding:0;
     box-sizing:border-box;
 }
+.App{
+    position: relative;
+}
+body{
+    background-color:black;
+}
+.link{
+    text-decoration:none;
+    color:#ffe81f;
+}
 `;
 
 export default GlobalStyles;
