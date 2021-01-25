@@ -80,6 +80,7 @@ const HomePageComponent = styled.div`
   padding-top: 5rem;
   padding-bottom: 7.5rem;
   .homePage-banner {
+    text-align: center;
     span {
       color: white;
     }

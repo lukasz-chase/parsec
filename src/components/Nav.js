@@ -4,6 +4,8 @@ import styled from "styled-components";
 //icons
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
+//input
+import TextField from "@material-ui/core/TextField";
 //router
 import { Link } from "react-router-dom";
 
@@ -76,6 +78,9 @@ const Nav = () => {
           parsec
         </Link>
       </div>
+      <div className="nav-input">
+        <TextField id="outlined-basic" label="Search" className="input-field" />
+      </div>
     </NavComponent>
   );
 };
@@ -92,7 +97,7 @@ const NavComponent = styled.div`
   .hamburgerMenu {
     display: flex;
     flex-direction: column;
-    flex: 4;
+    flex: 2;
     .hamburgerMenu-icon {
       padding-top: 5px;
       padding-left: 15px;
@@ -138,11 +143,21 @@ const NavComponent = styled.div`
     }
   }
   .navLogo {
-    flex: 5;
+    flex: 1;
     text-transform: uppercase;
     display: flex;
     align-items: center;
     font-size: 2rem;
+  }
+  .nav-input {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0rem 1rem;
+    .input-field {
+      background-color: gray;
+    }
   }
 `;
 
