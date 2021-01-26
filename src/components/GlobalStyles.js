@@ -11,7 +11,9 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     background-image: url("https://images6.alphacoders.com/909/thumb-1920-909641.png");
     background-color: black;
-    
+    background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .link{
     text-decoration:none;

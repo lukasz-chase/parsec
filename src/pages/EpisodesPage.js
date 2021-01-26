@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 //styling
 import styled from "styled-components";
 //url
-import { episodesUrl, specificCharacterUrl } from "../api";
+import { episodesUrl } from "../api";
 //axios
 import axios from "axios";
+//components
+import Character from "../components/character";
 //icon
 import SearchIcon from "@material-ui/icons/Search";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -29,7 +31,7 @@ const EpisodesPage = ({ darkModeState }) => {
     axios
       .get(episodesUrl(page, name, episode))
       .then((res) => setEpisodes(res.data));
-  }, [episodesUrl, page, name]);
+  }, [episodesUrl, page, name, episode]);
   //handlers
   const pagesHandler = (event, value) => {
     setPage(value);
@@ -44,10 +46,6 @@ const EpisodesPage = ({ darkModeState }) => {
     e.preventDefault();
     setName(textInput);
     setTextInput("");
-  };
-  const charactersHandler = (id) => {
-    // let character = axios.get(specificCharacterUrl(id)).then((res) => res.data);
-    // console.log(character);
   };
   return (
     <EpisodesPageComponent
@@ -99,12 +97,22 @@ const EpisodesPage = ({ darkModeState }) => {
                   <span className="episodeNumber">{episode.episode}</span>
                   {episode.name}
                 </AccordionSummary>
-                <AccordionDetails>
-                  {" "}
-                  Air Date: {episode.air_date}
-                  {episode.characters.map((character) =>
-                    charactersHandler(character.split("/", 6)[5])
-                  )}
+                <AccordionDetails className="episodes-info">
+                  <div className="date">Air Date: {episode.air_date}</div>
+                  <div className="characters">
+                    <div className="character-header">
+                      Characters that performed in this episode:
+                    </div>
+
+                    {episode.characters
+                      .map((character) => (
+                        <Character
+                          id={character.split("/", 6)[5]}
+                          key={character.split("/", 6)[5]}
+                        />
+                      ))
+                      .reduce((prev, curr) => [prev, ", ", curr])}
+                  </div>
                 </AccordionDetails>
               </Accordion>
             ))}
@@ -129,7 +137,10 @@ const EpisodesPageComponent = styled.div`
   padding: 5rem 0;
   min-height: 100vh;
   background-color: black;
-  background-image: url("https://i.pinimg.com/originals/11/45/f8/1145f83e0576e70339d476ff849673d8.jpg");
+  background-image: url("https://images4.alphacoders.com/633/thumb-1920-633222.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -140,6 +151,8 @@ const EpisodesPageComponent = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
+    color: white;
+    text-shadow: 1px 1px black;
     span {
       color: #97ce4c;
       padding: 0 10px;
@@ -152,6 +165,12 @@ const EpisodesPageComponent = styled.div`
   }
   .EpisodesPage-article {
     padding: 2rem 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .episodesList {
+      width: 30%;
+    }
   }
   .choosePage {
     display: flex;
@@ -160,6 +179,18 @@ const EpisodesPageComponent = styled.div`
   }
   .episodeNumber {
     padding-right: 1rem;
+  }
+  .episodes-info {
+    display: flex;
+    flex-direction: column;
+    .characters {
+      display: flex;
+      flex-wrap: wrap;
+      span {
+        color: black;
+        padding-left: 1rem;
+      }
+    }
   }
 `;
 
