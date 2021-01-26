@@ -153,7 +153,7 @@ const WholePageComponent = ({
                   >
                     <Button
                       color="primary"
-                      variant="contained"
+                      variant="outlined"
                       className="button"
                     >
                       Learn More
@@ -300,6 +300,7 @@ const WholePage = styled.div`
         }
       }
       .button {
+        color: black;
         @media screen and (max-width: 880px) {
           height: 1.5rem;
           width: 1rem;
