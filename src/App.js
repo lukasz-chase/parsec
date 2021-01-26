@@ -5,7 +5,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 //components
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import DarkMode from "./components/darkMode";
+
 //router
 import { Route } from "react-router-dom";
 //pages
@@ -35,11 +35,11 @@ function App() {
     >
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Nav />
-        <DarkMode
+        <Nav
           darkModeState={darkModeState}
           setDarkModeState={setDarkModeState}
         />
+
         <Route path="/" exact>
           <HomePage />
         </Route>

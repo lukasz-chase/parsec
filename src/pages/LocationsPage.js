@@ -13,6 +13,7 @@ const LocationsPage = ({ darkModeState }) => {
       style={{ backgroundBlendMode: darkModeState ? "luminosity" : "normal" }}
     >
       <WholePageComponent
+        darkModeState={darkModeState}
         url={locationsUrl}
         item={"locations"}
         locations={locations}
@@ -27,6 +28,7 @@ const LocationsPageComponent = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
 `;
 
 export default LocationsPage;

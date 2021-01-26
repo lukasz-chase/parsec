@@ -18,7 +18,7 @@ const HomePage = () => {
       </div>
       <div className="homePage-cards">
         <div className="card card-characters">
-          <span>Characters</span>
+          <span className="card-text">Characters</span>
           <Link to="/characters" className="link">
             <Button variant="contained" color="primary" className="button">
               View
@@ -26,7 +26,7 @@ const HomePage = () => {
           </Link>
         </div>
         <div className="card card-location">
-          <span>Locations</span>
+          <span className="card-text">Locations</span>
           <Link to="/locations" className="link">
             <Button variant="contained" color="primary" className="button">
               View
@@ -34,7 +34,7 @@ const HomePage = () => {
           </Link>
         </div>
         <div className="card card-episode">
-          <span>Episodes</span>
+          <span className="card-text">Episodes</span>
           <Link to="/episodes" className="link">
             <Button variant="contained" color="primary" className="button">
               View
@@ -71,27 +71,38 @@ const HomePageComponent = styled.div`
     align-items: center;
     padding: 1rem 0rem;
     flex-wrap: wrap;
+    @media screen and (max-height: 600px) {
+      min-height: 30rem;
+    }
     .card {
       bottom: 0;
       min-height: 35rem;
-      width: 10rem;
+      width: 12rem;
       margin: 1rem;
       transition: 0.3s ease-out all;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      color: #b7e4f9ff;
+      color: #80f5ef;
+      font-weight: bold;
       text-shadow: 1px 1px black;
       background-color: black;
       &:hover {
         transform: scale(1.1);
       }
-      @media screen and (max-height: 500px) {
+      @media screen and (max-height: 600px) {
+        width: 8rem;
         min-height: 20rem;
         &:hover {
           transform: none;
         }
+      }
+      .card-text {
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 1rem;
+        padding: 1rem 0rem;
+        margin-bottom: 10px;
       }
     }
     .card-characters {

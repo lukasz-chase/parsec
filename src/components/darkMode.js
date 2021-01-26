@@ -11,6 +11,7 @@ const DarkMode = ({ darkModeState, setDarkModeState }) => {
     <DarkModeComponent>
       <div className="switch">
         <Switch
+          style={{ pointerEvents: "all" }}
           checked={darkModeState}
           onChange={() => setDarkModeState(!darkModeState)}
           color="secondary"
@@ -30,7 +31,7 @@ const DarkModeComponent = styled.div`
     top: 0;
     display: flex;
     align-items: center;
-    padding: 1.5rem;
+    padding: 1rem;
   }
 `;
 

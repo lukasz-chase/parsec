@@ -14,7 +14,13 @@ import Pagination from "@material-ui/lab/Pagination";
 //link
 import { Link } from "react-router-dom";
 
-const WholePageComponent = ({ url, item, characters, locations }) => {
+const WholePageComponent = ({
+  url,
+  item,
+  characters,
+  locations,
+  darkModeState,
+}) => {
   //state
   const [data, setData] = useState(null);
   const [page, setPage] = useState(1);
@@ -77,10 +83,10 @@ const WholePageComponent = ({ url, item, characters, locations }) => {
         {characters && (
           <div className="page-select">
             <select ref={selectRef} defaultValue="" onChange={selectHandler}>
-              <option value="">status</option>
-              <option value="alive">alive</option>
-              <option value="dead">dead</option>
-              <option value="unknown">unknown</option>
+              <option value="">Status</option>
+              <option value="alive">Alive</option>
+              <option value="dead">Dead</option>
+              <option value="unknown">Unknown</option>
             </select>
           </div>
         )}
@@ -90,13 +96,24 @@ const WholePageComponent = ({ url, item, characters, locations }) => {
           <div className="WholePage-cards">
             {console.log(data)}
             {data.results.map((results) => (
-              <div className="card" key={results.id}>
+              <div
+                className="card"
+                key={results.id}
+                style={{
+                  backgroundColor: darkModeState
+                    ? "rgba(255, 255, 255, 0.4)"
+                    : "rgba(0, 0, 0, 0.5)",
+                }}
+              >
                 {results.image && (
                   <div className="card-image">
                     <img src={results.image} alt={results.name} />
                   </div>
                 )}
-                <div className="card-info">
+                <div
+                  className="card-info"
+                  style={{ width: locations ? "100%" : "50%" }}
+                >
                   <h1>{results.name}</h1>
                   {results.gender && (
                     <span>
@@ -126,23 +143,23 @@ const WholePageComponent = ({ url, item, characters, locations }) => {
                       {results.dimension}
                     </span>
                   )}
-                </div>
-                <Link
-                  className="link"
-                  to={
-                    characters
-                      ? `/character/${results.id}`
-                      : `/location/${results.id}`
-                  }
-                >
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    className="button"
+                  <Link
+                    className="link"
+                    to={
+                      characters
+                        ? `/character/${results.id}`
+                        : `/location/${results.id}`
+                    }
                   >
-                    Learn More
-                  </Button>
-                </Link>
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      className="button"
+                    >
+                      Learn More
+                    </Button>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -198,9 +215,10 @@ const WholePage = styled.div`
     }
     .page-select {
       padding: 1rem;
-
       select {
+        padding: 7px;
         font-size: 1.5rem;
+        font-family: "Roboto", sans-serif;
         &:hover {
           cursor: pointer;
         }
@@ -227,22 +245,48 @@ const WholePage = styled.div`
     }
     .card {
       min-height: 20rem;
-      min-width: 15rem;
+      width: 35rem;
       border-radius: 2rem;
       margin: 1rem;
       display: flex;
-      justify-content: center;
       align-items: center;
-      flex-direction: column;
       text-align: center;
+
+      @media screen and (max-width: 1200px) {
+        min-height: 10rem;
+        width: 25rem;
+        font-size: 1rem;
+      }
+      @media screen and (max-width: 880px) {
+        height: 5rem;
+        width: 14rem;
+        font-size: 0.6rem;
+        margin: 0.2rem;
+      }
       .card-image {
+        width: 50%;
         img {
-          height: 40vh;
-          width: 40vh;
+          height: 20rem;
+          object-fit: cover;
+          width: 100%;
+          border-radius: 2rem 0 0 2rem;
+          @media screen and (max-width: 1200px) {
+            min-height: 10rem;
+            width: 12rem;
+            object-fit: cover;
+          }
+          @media screen and (max-width: 880px) {
+            height: 5rem;
+            width: 7rem;
+            object-fit: cover;
+          }
         }
       }
       .card-info {
+        width: 50%;
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
         h2 {
           font-size: 1.5rem;
@@ -253,6 +297,13 @@ const WholePage = styled.div`
         span {
           color: #b7e4f9ff;
           padding: 5px 0;
+        }
+      }
+      .button {
+        @media screen and (max-width: 880px) {
+          height: 1.5rem;
+          width: 1rem;
+          font-size: 0.5rem;
         }
       }
     }

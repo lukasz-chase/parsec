@@ -9,11 +9,12 @@ const GlobalStyles = createGlobalStyle`
 .App{
     position: relative;
     font-family: 'Roboto', sans-serif;
-    background-image: url("https://images6.alphacoders.com/909/thumb-1920-909641.png");
+    background-image: url("https://images5.alphacoders.com/876/thumb-1920-876590.png");
     background-color: black;
+    background-attachment: fixed;
     background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+    background-position: center;
+    background-size: cover;
 }
 .link{
     text-decoration:none;

@@ -31,7 +31,7 @@ const EpisodesPage = ({ darkModeState }) => {
     axios
       .get(episodesUrl(page, name, episode))
       .then((res) => setEpisodes(res.data));
-  }, [episodesUrl, page, name, episode]);
+  }, [page, name, episode]);
   //handlers
   const pagesHandler = (event, value) => {
     setPage(value);
@@ -84,9 +84,12 @@ const EpisodesPage = ({ darkModeState }) => {
             {episodes.results.map((episode) => (
               <Accordion
                 key={episode.id}
+                className="accordion"
                 style={{
-                  backgroundColor: darkModeState ? "gray" : "white",
-                  color: "#97ce4c",
+                  backgroundColor: darkModeState
+                    ? "rgba(255, 255, 255, 0.568)"
+                    : "rgba(12, 12, 12, 0.8)",
+                  color: darkModeState ? "black" : "white",
                 }}
               >
                 <AccordionSummary
@@ -98,7 +101,9 @@ const EpisodesPage = ({ darkModeState }) => {
                   {episode.name}
                 </AccordionSummary>
                 <AccordionDetails className="episodes-info">
-                  <div className="date">Air Date: {episode.air_date}</div>
+                  <div className="date">
+                    Air Date: <span>{episode.air_date}</span>
+                  </div>
                   <div className="characters">
                     <div className="character-header">
                       Characters that performed in this episode:
@@ -140,6 +145,7 @@ const EpisodesPageComponent = styled.div`
   background-image: url("https://images4.alphacoders.com/633/thumb-1920-633222.jpg");
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -162,6 +168,9 @@ const EpisodesPageComponent = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    .input-field {
+      background-color: white;
+    }
   }
   .EpisodesPage-article {
     padding: 2rem 0rem;
@@ -169,25 +178,42 @@ const EpisodesPageComponent = styled.div`
     justify-content: center;
     align-items: center;
     .episodesList {
-      width: 30%;
+      width: 25%;
+      @media screen and (max-width: 1200px) {
+        width: 100%;
+      }
+      .accordion {
+        width: 100%;
+      }
     }
   }
   .choosePage {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
   }
   .episodeNumber {
     padding-right: 1rem;
+    color: #97ce4c;
+    text-shadow: 1px 1px black;
   }
   .episodes-info {
     display: flex;
     flex-direction: column;
+    .date {
+      padding: 1rem 0rem;
+      span {
+        color: #97ce4c;
+        text-shadow: 1px 1px black;
+      }
+    }
     .characters {
       display: flex;
       flex-wrap: wrap;
       span {
-        color: black;
+        color: #97ce4c;
+        text-shadow: 1px 1px black;
         padding-left: 1rem;
       }
     }

@@ -9,7 +9,7 @@ const Character = ({ id }) => {
   const [char, setChar] = useState(null);
   useEffect(() => {
     axios.get(specificCharacterUrl(id)).then((res) => setChar(res.data));
-  }, []);
+  }, [id]);
   return <div className="div">{char && <span>{char.name}</span>}</div>;
 };
 

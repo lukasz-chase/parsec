@@ -53,8 +53,8 @@ const FooterComponent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #97ce4c;
-
+  color: white;
+  text-shadow: 2px 2px black;
   .footer-text {
     text-transform: upperCase;
   }
@@ -63,11 +63,12 @@ const FooterComponent = styled.div`
     padding: 1rem 0rem;
     a {
       text-decoration: none;
-      color: #97ce4c;
+      color: white;
     }
     .icon {
       margin: 0rem 1rem;
       transition: 0.2s ease-in all;
+      background-color: black;
       &:hover {
         color: #b4b4b4;
       }

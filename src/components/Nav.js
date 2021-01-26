@@ -11,13 +11,20 @@ import HomeIcon from "@material-ui/icons/Home";
 //router
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+//components
+import DarkMode from "../components/darkMode";
 
-const Nav = () => {
+const Nav = ({ darkModeState, setDarkModeState }) => {
   const [openMenu, SetOpenMenu] = useState(false);
+  console.log(darkModeState);
   //get the current location
   const location = useLocation();
   return (
-    <NavComponent>
+    <NavComponent style={{ pointerEvents: openMenu ? "all" : "none" }}>
+      <DarkMode
+        darkModeState={darkModeState}
+        setDarkModeState={setDarkModeState}
+      />
       <div className="hamburgerMenu">
         <div className="hamburgerMenu-icon">
           {openMenu ? (
@@ -30,6 +37,7 @@ const Nav = () => {
             />
           ) : (
             <MenuIcon
+              style={{ pointerEvents: "all" }}
               className="icon"
               fontSize="large"
               onClick={() => {
@@ -42,6 +50,8 @@ const Nav = () => {
           className="hamburgerMenu-list"
           style={{
             transform: openMenu ? "translateX(0)" : "translateX(-100%)",
+
+            backgroundBlendMode: darkModeState ? "luminosity" : "normal",
           }}
         >
           <ul>
@@ -50,7 +60,7 @@ const Nav = () => {
                 to="/"
                 className="nav-link"
                 style={{
-                  color: location.pathname === "/" ? "#b7e4f9ff" : "black",
+                  color: location.pathname === "/" ? "#0c08f7" : "black",
                 }}
               >
                 <HomeIcon /> Home
@@ -62,7 +72,7 @@ const Nav = () => {
                 className="nav-link"
                 style={{
                   color:
-                    location.pathname === "/characters" ? "#b7e4f9ff" : "black",
+                    location.pathname === "/characters" ? "#0c08f7" : "black",
                 }}
               >
                 <PeopleIcon /> Characters
@@ -74,10 +84,10 @@ const Nav = () => {
                 className="nav-link"
                 style={{
                   color:
-                    location.pathname === "/locations" ? "#b7e4f9ff" : "black",
+                    location.pathname === "/locations" ? "#0c08f7" : "black",
                 }}
               >
-                <LocationOnIcon /> locations
+                <LocationOnIcon /> Locations
               </Link>
             </li>
             <li>
@@ -86,7 +96,7 @@ const Nav = () => {
                 className="nav-link"
                 style={{
                   color:
-                    location.pathname === "/episodes" ? "#b7e4f9ff" : "black",
+                    location.pathname === "/episodes" ? "#0c08f7" : "black",
                 }}
               >
                 <TvIcon /> Episodes
@@ -96,7 +106,11 @@ const Nav = () => {
         </div>
       </div>
       <div className="navLogo">
-        <Link to="/" className="link" style={{ color: "#97ce4c" }}>
+        <Link
+          to="/"
+          className="link"
+          style={{ color: "#97ce4c", pointerEvents: "all" }}
+        >
           parsec
         </Link>
       </div>
@@ -115,7 +129,9 @@ const NavComponent = styled.div`
   .hamburgerMenu {
     display: flex;
     flex-direction: column;
-    flex: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
     .hamburgerMenu-icon {
       padding-top: 5px;
       padding-left: 15px;
@@ -127,6 +143,10 @@ const NavComponent = styled.div`
     }
     .hamburgerMenu-list {
       background-image: url("https://i.imgur.com/NQnPLKg.png");
+      background-color: black;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
       background-position: center;
       min-height: 95vh;
       width: 15rem;
@@ -146,8 +166,12 @@ const NavComponent = styled.div`
           display: flex;
           justify-content: center;
           list-style: none;
-          padding: 2rem 0rem;
+          padding: 1rem 0rem;
+          margin-bottom: 1rem;
           font-size: 1.5rem;
+          background-color: rgba(255, 255, 255, 0.6);
+
+          border-radius: 1rem;
           &:hover {
             cursor: pointer;
           }
@@ -162,7 +186,6 @@ const NavComponent = styled.div`
     }
   }
   .navLogo {
-    flex: 2.5;
     text-transform: uppercase;
     display: flex;
     align-items: center;
