@@ -8,10 +8,10 @@ const GlobalStyles = createGlobalStyle`
 }
 .App{
     position: relative;
-}
-body{
     font-family: 'Roboto', sans-serif;
     background-image: url("https://images6.alphacoders.com/909/thumb-1920-909641.png");
+    background-color: black;
+    
 }
 .link{
     text-decoration:none;

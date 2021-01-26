@@ -9,3 +9,7 @@ export const specificCharacterUrl = (id) => `${baseUrl}/character/${id}`;
 export const locationsUrl = (page, name) =>
   `${baseUrl}/location/?page=${page}&name=${name}`;
 export const specificLocationUrl = (id) => `${baseUrl}/location/${id}`;
+
+//episodes url
+export const episodesUrl = (page, name, episode) =>
+  `${baseUrl}/episode/?page=${page}&name=${name}&episode=${episode}`;

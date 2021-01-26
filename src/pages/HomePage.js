@@ -56,7 +56,7 @@ const HomePageComponent = styled.div`
   text-shadow: 1px 1px black;
   font-size: 1.5rem;
   padding-top: 5rem;
-  padding-bottom: 7.5rem;
+  padding-bottom: 10rem;
   .homePage-banner {
     text-align: center;
     span {
@@ -83,6 +83,7 @@ const HomePageComponent = styled.div`
       flex-direction: column;
       color: #b7e4f9ff;
       text-shadow: 1px 1px black;
+      background-color: black;
       &:hover {
         transform: scale(1.1);
       }

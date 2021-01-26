@@ -11,6 +11,8 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 //material ui
 import Button from "@material-ui/core/Button";
 import Pagination from "@material-ui/lab/Pagination";
+//link
+import { Link } from "react-router-dom";
 
 const WholePageComponent = ({ url, item, characters, locations }) => {
   //state
@@ -125,9 +127,22 @@ const WholePageComponent = ({ url, item, characters, locations }) => {
                     </span>
                   )}
                 </div>
-                <Button color="primary" variant="contained" className="button">
-                  Learn More
-                </Button>
+                <Link
+                  className="link"
+                  to={
+                    characters
+                      ? `/character/${results.id}`
+                      : `/location/${results.id}`
+                  }
+                >
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    className="button"
+                  >
+                    Learn More
+                  </Button>
+                </Link>
               </div>
             ))}
           </div>
@@ -154,7 +169,7 @@ const WholePageComponent = ({ url, item, characters, locations }) => {
 const WholePage = styled.div`
   min-height: 45vw;
   padding-top: 5rem;
-  padding-bottom: 9rem;
+  padding-bottom: 12rem;
   color: #b7e4f9ff;
   text-shadow: 1px 1px black;
   display: flex;

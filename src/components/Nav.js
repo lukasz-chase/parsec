@@ -4,6 +4,10 @@ import styled from "styled-components";
 //icons
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
+import TvIcon from "@material-ui/icons/Tv";
+import PeopleIcon from "@material-ui/icons/People";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import HomeIcon from "@material-ui/icons/Home";
 //router
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -43,6 +47,17 @@ const Nav = () => {
           <ul>
             <li>
               <Link
+                to="/"
+                className="nav-link"
+                style={{
+                  color: location.pathname === "/" ? "#b7e4f9ff" : "black",
+                }}
+              >
+                <HomeIcon /> Home
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/characters"
                 className="nav-link"
                 style={{
@@ -50,7 +65,7 @@ const Nav = () => {
                     location.pathname === "/characters" ? "#b7e4f9ff" : "black",
                 }}
               >
-                People
+                <PeopleIcon /> Characters
               </Link>
             </li>
             <li>
@@ -62,7 +77,7 @@ const Nav = () => {
                     location.pathname === "/locations" ? "#b7e4f9ff" : "black",
                 }}
               >
-                locations
+                <LocationOnIcon /> locations
               </Link>
             </li>
             <li>
@@ -74,7 +89,7 @@ const Nav = () => {
                     location.pathname === "/episodes" ? "#b7e4f9ff" : "black",
                 }}
               >
-                Episodes
+                <TvIcon /> Episodes
               </Link>
             </li>
           </ul>

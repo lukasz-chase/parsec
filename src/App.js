@@ -29,7 +29,10 @@ function App() {
     },
   });
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{ backgroundBlendMode: darkModeState ? "luminosity" : "normal" }}
+    >
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Nav />
@@ -44,10 +47,10 @@ function App() {
           <PeoplePage darkModeState={darkModeState} />
         </Route>
         <Route path="/locations" exact>
-          <LocationsPage />
+          <LocationsPage darkModeState={darkModeState} />
         </Route>
         <Route path="/episodes" exact>
-          <EpisodesPage />
+          <EpisodesPage darkModeState={darkModeState} />
         </Route>
         <Footer />
       </ThemeProvider>
