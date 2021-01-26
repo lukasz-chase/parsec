@@ -12,7 +12,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Button from "@material-ui/core/Button";
 import Pagination from "@material-ui/lab/Pagination";
 
-const WholePageComponent = ({ url, item, characters }) => {
+const WholePageComponent = ({ url, item, characters, locations }) => {
   //state
   const [data, setData] = useState(null);
   const [page, setPage] = useState(1);
@@ -154,9 +154,8 @@ const WholePageComponent = ({ url, item, characters }) => {
 const WholePage = styled.div`
   min-height: 45vw;
   padding-top: 5rem;
-  padding-bottom: 7.5rem;
+  padding-bottom: 9rem;
   color: #b7e4f9ff;
-  background-color: white;
   text-shadow: 1px 1px black;
   display: flex;
   justify-content: center;
@@ -179,6 +178,7 @@ const WholePage = styled.div`
     flex-direction: row;
     padding: 1rem 0rem;
     .page-input {
+      background-color: white;
       padding: 0rem 1rem;
     }
     .page-select {

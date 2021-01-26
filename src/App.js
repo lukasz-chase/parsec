@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 //global styles
 import GlobalStyles from "./components/GlobalStyles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 //components
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import DarkMode from "./components/darkMode";
 //router
 import { Route } from "react-router-dom";
 //pages
@@ -14,6 +15,9 @@ import LocationsPage from "./pages/LocationsPage";
 import EpisodesPage from "./pages/EpisodesPage";
 
 function App() {
+  //state
+  const [darkModeState, setDarkModeState] = useState(false);
+  //theme
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -29,11 +33,15 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Nav />
+        <DarkMode
+          darkModeState={darkModeState}
+          setDarkModeState={setDarkModeState}
+        />
         <Route path="/" exact>
           <HomePage />
         </Route>
         <Route path="/characters" exact>
-          <PeoplePage />
+          <PeoplePage darkModeState={darkModeState} />
         </Route>
         <Route path="/locations" exact>
           <LocationsPage />

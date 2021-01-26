@@ -6,10 +6,12 @@ import styled from "styled-components";
 //components
 import WholePageComponent from "../components/WholePageComponent";
 
-const PeoplePage = () => {
+const PeoplePage = ({ darkModeState }) => {
   const characters = true;
   return (
-    <PeoplePageComponent>
+    <PeoplePageComponent
+      style={{ backgroundColor: darkModeState ? "black" : "white" }}
+    >
       <WholePageComponent
         url={charactersUrl}
         item={"characters"}

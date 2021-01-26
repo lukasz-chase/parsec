@@ -48,12 +48,13 @@ const FooterComponent = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;
+  min-height: 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #6d6d6d;
+  color: #97ce4c;
+
   .footer-text {
     text-transform: upperCase;
   }
@@ -62,7 +63,7 @@ const FooterComponent = styled.div`
     padding: 1rem 0rem;
     a {
       text-decoration: none;
-      color: #6d6d6d;
+      color: #97ce4c;
     }
     .icon {
       margin: 0rem 1rem;
