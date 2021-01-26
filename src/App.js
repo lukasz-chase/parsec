@@ -10,6 +10,8 @@ import { Route } from "react-router-dom";
 //pages
 import HomePage from "./pages/HomePage";
 import PeoplePage from "./pages/PeoplePage";
+import LocationsPage from "./pages/LocationsPage";
+import EpisodesPage from "./pages/EpisodesPage";
 
 function App() {
   const theme = createMuiTheme({
@@ -32,6 +34,12 @@ function App() {
         </Route>
         <Route path="/characters" exact>
           <PeoplePage />
+        </Route>
+        <Route path="/locations" exact>
+          <LocationsPage />
+        </Route>
+        <Route path="/episodes" exact>
+          <EpisodesPage />
         </Route>
         <Footer />
       </ThemeProvider>

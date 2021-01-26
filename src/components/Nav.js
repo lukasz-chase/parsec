@@ -4,10 +4,6 @@ import styled from "styled-components";
 //icons
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
-import SearchIcon from "@material-ui/icons/Search";
-//input
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
 //router
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -16,7 +12,6 @@ const Nav = () => {
   const [openMenu, SetOpenMenu] = useState(false);
   //get the current location
   const location = useLocation();
-  console.log(location.pathname);
   return (
     <NavComponent>
       <div className="hamburgerMenu">
@@ -52,9 +47,7 @@ const Nav = () => {
                 className="nav-link"
                 style={{
                   color:
-                    location.pathname === "/characters"
-                      ? "orange"
-                      : "#b7e4f9ff",
+                    location.pathname === "/characters" ? "#b7e4f9ff" : "black",
                 }}
               >
                 People
@@ -66,10 +59,10 @@ const Nav = () => {
                 className="nav-link"
                 style={{
                   color:
-                    location.pathname === "/locations" ? "orange" : "#b7e4f9ff",
+                    location.pathname === "/locations" ? "#b7e4f9ff" : "black",
                 }}
               >
-                Films
+                locations
               </Link>
             </li>
             <li>
@@ -78,10 +71,10 @@ const Nav = () => {
                 className="nav-link"
                 style={{
                   color:
-                    location.pathname === "/episodes" ? "orange" : "#b7e4f9ff",
+                    location.pathname === "/episodes" ? "#b7e4f9ff" : "black",
                 }}
               >
-                Star ships
+                Episodes
               </Link>
             </li>
           </ul>
@@ -92,22 +85,6 @@ const Nav = () => {
           parsec
         </Link>
       </div>
-      {/* <div className="nav-input">
-        <TextField
-          id="standard-adornment-password"
-          label="Search"
-          color="secondary"
-          className="input-field"
-          size="small"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </div> */}
     </NavComponent>
   );
 };
@@ -134,7 +111,8 @@ const NavComponent = styled.div`
       }
     }
     .hamburgerMenu-list {
-      background-color: #97ce4c;
+      background-image: url("https://i.imgur.com/NQnPLKg.png");
+      background-position: center;
       min-height: 95vh;
       width: 15rem;
       display: flex;
@@ -149,7 +127,6 @@ const NavComponent = styled.div`
         justify-content: center;
         flex-direction: column;
         li {
-          color: #b7e4f9ff;
           width: 100%;
           display: flex;
           justify-content: center;
@@ -167,10 +144,6 @@ const NavComponent = styled.div`
     }
     .nav-link {
       text-decoration: none;
-      color: #126388;
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
   .navLogo {
@@ -181,16 +154,6 @@ const NavComponent = styled.div`
     font-size: 3rem;
     font-weight: bold;
   }
-  /* .nav-input {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0rem 1rem;
-    .input-field {
-      background-color: white;
-    }
-  } */
 `;
 
 export default Nav;

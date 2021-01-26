@@ -7,9 +7,14 @@ import styled from "styled-components";
 import WholePageComponent from "../components/WholePageComponent";
 
 const PeoplePage = () => {
+  const characters = true;
   return (
     <PeoplePageComponent>
-      <WholePageComponent url={charactersUrl} item={"characters"} />
+      <WholePageComponent
+        url={charactersUrl}
+        item={"characters"}
+        characters={characters}
+      />
     </PeoplePageComponent>
   );
 };
