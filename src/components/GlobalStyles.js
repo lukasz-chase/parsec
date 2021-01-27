@@ -9,14 +9,14 @@ const GlobalStyles = createGlobalStyle`
 .App{
     position: relative;
     font-family: 'Roboto', sans-serif;
-    background-image: url("https://www.freepnglogos.com/uploads/rick-and-morty/rick-and-morty-background-rick-morty-and-man-sky-mashup-wallpaper-taken-from-4.png");
+    background-image: url("https://i.imgur.com/SMoMX1q.jpg");
     background-color: black;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center 40%;
     background-size: cover;
     @media screen and (max-width: 880px) {
-    background-position: 45% 50%;
+    background-position: 30% 100%;
   }
 
 }

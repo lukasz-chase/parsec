@@ -90,6 +90,7 @@ const DetailsPageComponent = styled.div`
     .characters-img {
       img {
         height: 25vw;
+        border-radius: 15rem;
         @media screen and (max-width: 880px) {
           height: 13rem;
           width: 13rem;

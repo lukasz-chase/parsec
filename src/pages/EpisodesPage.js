@@ -109,7 +109,9 @@ const EpisodesPage = ({ darkModeState }) => {
                   color: darkModeState ? "rgba(255, 255, 255, 0.568)" : "white",
                 }}
               >
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon color="primary" />}
+                >
                   <span className="episodeNumber">{episode.episode}</span>
                   {episode.name}
                 </AccordionSummary>
@@ -212,6 +214,7 @@ const EpisodesPageComponent = styled.div`
       }
       .accordion {
         width: 100%;
+        border-radius: 1rem;
       }
     }
   }
