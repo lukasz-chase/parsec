@@ -13,7 +13,8 @@ import HomePage from "./pages/HomePage";
 import CharactersPage from "./pages/CharactersPage";
 import LocationsPage from "./pages/LocationsPage";
 import EpisodesPage from "./pages/EpisodesPage";
-import DetailsPage from "./pages/detailsPage";
+import LocationDetails from "./pages/LocationDetails";
+import CharactersDetails from "./pages/CharactersDetails";
 
 function App() {
   //state
@@ -54,10 +55,10 @@ function App() {
           <EpisodesPage darkModeState={darkModeState} />
         </Route>
         <Route path="/location/:id" exact>
-          <DetailsPage darkModeState={darkModeState} />
+          <LocationDetails darkModeState={darkModeState} />
         </Route>
         <Route path="/character/:id" exact>
-          <DetailsPage darkModeState={darkModeState} />
+          <CharactersDetails darkModeState={darkModeState} />
         </Route>
         <Footer />
       </ThemeProvider>

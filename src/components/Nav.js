@@ -54,53 +54,51 @@ const Nav = ({ darkModeState, setDarkModeState }) => {
           }}
         >
           <ul>
-            <li>
-              <Link
-                to="/"
-                className="nav-link"
-                style={{
-                  color: location.pathname === "/" ? "#0c08f7" : "black",
-                }}
-              >
+            <Link
+              to="/"
+              className="nav-link"
+              style={{
+                color: location.pathname === "/" ? "#0c08f7" : "black",
+              }}
+            >
+              <li>
                 <HomeIcon /> Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/characters"
-                className="nav-link"
-                style={{
-                  color:
-                    location.pathname === "/characters" ? "#0c08f7" : "black",
-                }}
-              >
+              </li>
+            </Link>
+            <Link
+              to="/characters"
+              className="nav-link"
+              style={{
+                color:
+                  location.pathname === "/characters" ? "#0c08f7" : "black",
+              }}
+            >
+              <li>
                 <PeopleIcon /> Characters
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/locations"
-                className="nav-link"
-                style={{
-                  color:
-                    location.pathname === "/locations" ? "#0c08f7" : "black",
-                }}
-              >
+              </li>
+            </Link>
+            <Link
+              to="/locations"
+              className="nav-link"
+              style={{
+                color: location.pathname === "/locations" ? "#0c08f7" : "black",
+              }}
+            >
+              <li>
                 <LocationOnIcon /> Locations
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/episodes"
-                className="nav-link"
-                style={{
-                  color:
-                    location.pathname === "/episodes" ? "#0c08f7" : "black",
-                }}
-              >
+              </li>
+            </Link>
+            <Link
+              to="/episodes"
+              className="nav-link"
+              style={{
+                color: location.pathname === "/episodes" ? "#0c08f7" : "black",
+              }}
+            >
+              <li>
                 <TvIcon /> Episodes
-              </Link>
-            </li>
+              </li>
+            </Link>
           </ul>
         </div>
       </div>
@@ -161,7 +159,6 @@ const NavComponent = styled.div`
         justify-content: center;
         flex-direction: column;
         li {
-          width: 100%;
           display: flex;
           justify-content: center;
           list-style: none;
@@ -182,6 +179,7 @@ const NavComponent = styled.div`
     }
     .nav-link {
       text-decoration: none;
+      width: 100%;
     }
   }
   .navLogo {

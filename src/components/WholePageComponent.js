@@ -261,12 +261,14 @@ const WholePage = styled.div`
         width: 20rem;
       }
       @media screen and (max-width: 880px) {
-        height: 8rem;
+        height: 9rem;
         width: 14rem;
         margin: 0.2rem;
       }
       .card-image {
         width: 50%;
+        display: flex;
+        align-items: center;
         img {
           height: 15rem;
           object-fit: cover;
@@ -276,7 +278,7 @@ const WholePage = styled.div`
             height: 10rem;
           }
           @media screen and (max-width: 880px) {
-            height: 7.7rem;
+            height: 9rem;
           }
         }
       }
@@ -297,6 +299,7 @@ const WholePage = styled.div`
         }
         span {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
           font-size: 1rem;
           color: #b7e4f9ff;
@@ -326,6 +329,7 @@ const WholePage = styled.div`
     }
     .choosePage {
       background-color: white;
+      margin: 1rem 0rem;
     }
   }
 `;
