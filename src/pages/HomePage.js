@@ -110,7 +110,7 @@ const HomePageComponent = styled.div`
       background-position: center;
     }
     .card-location {
-      background-image: url("https://static.wikia.nocookie.net/rickandmorty/images/2/2e/S2e5_bird_world.png/revision/latest/scale-to-width-down/1000?cb=20160926033803");
+      background-image: url("https://www.wallpaperflare.com/static/229/145/81/rick-and-morty-purple-pink-planet-wallpaper.jpg");
       background-position: center;
       background-size: cover;
     }
