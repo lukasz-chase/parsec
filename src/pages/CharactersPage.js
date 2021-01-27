@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 //url
 import { charactersUrl } from "../api";
 //styling
@@ -6,8 +6,12 @@ import styled from "styled-components";
 //components
 import WholePageComponent from "../components/WholePageComponent";
 
-const CharactersPage = ({ darkModeState }) => {
+const CharactersPage = ({ darkModeState, lastPage, setLastPage }) => {
   const characters = true;
+  useEffect(() => {
+    setLastPage("/characters");
+  }, [setLastPage]);
+
   return (
     <CharactersPageComponent
       style={{ backgroundBlendMode: darkModeState ? "luminosity" : "normal" }}

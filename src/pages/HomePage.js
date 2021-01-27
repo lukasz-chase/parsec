@@ -16,30 +16,33 @@ const HomePage = () => {
         universe.
       </div>
       <div className="homePage-cards">
-        <div className="card card-characters">
-          <span className="card-text">Characters</span>
-          <Link to="/characters" className="link">
+        <Link to="/characters" className="link">
+          <div className="card card-characters">
+            <span className="card-text">Characters</span>
+
             <Button variant="contained" color="primary" className="button">
               View
             </Button>
-          </Link>
-        </div>
-        <div className="card card-location">
-          <span className="card-text">Locations</span>
-          <Link to="/locations" className="link">
+          </div>
+        </Link>
+        <Link to="/locations" className="link">
+          <div className="card card-location">
+            <span className="card-text">Locations</span>
+
             <Button variant="contained" color="primary" className="button">
               View
             </Button>
-          </Link>
-        </div>
-        <div className="card card-episode">
-          <span className="card-text">Episodes</span>
-          <Link to="/episodes" className="link">
+          </div>
+        </Link>
+        <Link to="/episodes" className="link">
+          <div className="card card-episode">
+            <span className="card-text">Episodes</span>
+
             <Button variant="contained" color="primary" className="button">
               View
             </Button>
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     </HomePageComponent>
   );

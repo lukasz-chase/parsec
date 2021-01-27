@@ -7,8 +7,14 @@ import axios from "axios";
 import { specificUrl } from "../api";
 //styling
 import styled from "styled-components";
+//icon
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import Button from "@material-ui/core/Button";
+//link
+import { Link } from "react-router-dom";
 
-const CharactersDetails = ({ darkModeState }) => {
+const CharactersDetails = ({ darkModeState, lastPage }) => {
+  console.log(lastPage);
   //state
   const [data, setData] = useState(null);
   //get the current location
@@ -30,6 +36,16 @@ const CharactersDetails = ({ darkModeState }) => {
         backgroundBlendMode: darkModeState ? "luminosity" : "normal",
       }}
     >
+      <Link to={lastPage} className="link">
+        <Button
+          variant="outlined"
+          color="primary"
+          startIcon={<ArrowBackIcon />}
+          className="go-back-button"
+        >
+          Go Back
+        </Button>
+      </Link>
       {data && (
         <div className="characters-article">
           <div className="characters-img">
@@ -84,6 +100,13 @@ const DetailsPageComponent = styled.div`
   background-attachment: fixed;
   @media screen and (max-width: 880px) {
     background-position: 80% 0%;
+  }
+  .go-back-button {
+    font-size: 1rem;
+    margin: 1rem 0rem;
+    @media screen and (max-width: 880px) {
+      font-size: 0.5rem;
+    }
   }
   .characters-article {
     display: flex;

@@ -19,7 +19,7 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 
-const EpisodesPage = ({ darkModeState }) => {
+const EpisodesPage = ({ darkModeState, setLastPage }) => {
   //state
   const [episodes, setEpisodes] = useState(null);
   const [page, setPage] = useState(1);
@@ -32,6 +32,9 @@ const EpisodesPage = ({ darkModeState }) => {
       .get(episodesUrl(page, name, episode))
       .then((res) => setEpisodes(res.data));
   }, [page, name, episode]);
+  useEffect(() => {
+    setLastPage("/episodes");
+  }, [setLastPage]);
   //handlers
   //pagination handler
   const pagesHandler = (e, v) => {
@@ -126,10 +129,9 @@ const EpisodesPage = ({ darkModeState }) => {
 
                     {episode.characters
                       .map((character) => (
-                        <Character
-                          id={character.split("/", 6)[5]}
-                          key={character.split("/", 6)[5]}
-                        />
+                        <span key={character.split("/", 6)[5]}>
+                          <Character id={character.split("/", 6)[5]} />
+                        </span>
                       ))
                       .reduce((prev, curr) => [prev, ", ", curr])}
                   </div>

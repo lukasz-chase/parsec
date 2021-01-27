@@ -9,20 +9,30 @@ import { specificUrl } from "../api";
 import styled from "styled-components";
 //components
 import Character from "../components/character";
+//icon
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import Button from "@material-ui/core/Button";
+//link
+import { Link } from "react-router-dom";
 
-const LocationDetails = ({ darkModeState }) => {
+const LocationDetails = ({ darkModeState, lastPage, setLastPage }) => {
   //state
   const [data, setData] = useState(null);
+  const [previousPage, setPreviousPage] = useState(null);
   //get the current location
   const location = useLocation();
   const pathId =
     location.pathname.split("/", 3)[1] +
     "/" +
     location.pathname.split("/", 3)[2];
+  useEffect(() => {
+    setPreviousPage(lastPage);
+  }, [setPreviousPage, lastPage]);
   //useEffect
   useEffect(() => {
     axios.get(specificUrl(pathId)).then((res) => setData(res.data));
-  }, [pathId]);
+    setLastPage(`/${pathId}`);
+  }, [pathId, setLastPage]);
   return (
     <LocationDetailsComponent
       style={{
@@ -32,6 +42,34 @@ const LocationDetails = ({ darkModeState }) => {
         backgroundBlendMode: darkModeState ? "luminosity" : "normal",
       }}
     >
+      {previousPage === lastPage ? (
+        <Link to="/locations" className="link">
+          <Button
+            variant="outlined"
+            color="primary"
+            startIcon={<ArrowBackIcon />}
+            className="go-back-button"
+          >
+            Go Back
+          </Button>
+        </Link>
+      ) : (
+        <>
+          {previousPage && (
+            <Link to={previousPage} className="link">
+              <Button
+                variant="outlined"
+                color="primary"
+                startIcon={<ArrowBackIcon />}
+                className="go-back-button"
+              >
+                Go Back
+              </Button>
+            </Link>
+          )}
+        </>
+      )}
+
       {data && (
         <div className="LocationDetails-article">
           <h1 className="header-text">{data.name}</h1>
@@ -78,7 +116,13 @@ const LocationDetailsComponent = styled.div`
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-
+  .go-back-button {
+    font-size: 1rem;
+    margin: 1rem 0rem;
+    @media screen and (max-width: 880px) {
+      font-size: 0.5rem;
+    }
+  }
   .LocationDetails-article {
     width: 45vw;
     display: flex;
