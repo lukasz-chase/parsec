@@ -104,7 +104,7 @@ const HomePageComponent = styled.div`
       .card-text {
         background-color: rgba(0, 0, 0, 0.4);
         border-radius: 1rem;
-        padding: 1rem 0rem;
+        padding: 1rem 1rem;
         margin-bottom: 10px;
       }
     }
