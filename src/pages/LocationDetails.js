@@ -78,9 +78,7 @@ const LocationDetailsComponent = styled.div`
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  @media screen and (max-width: 880px) {
-    background-position: 83% 0%;
-  }
+
   .LocationDetails-article {
     width: 45vw;
     display: flex;

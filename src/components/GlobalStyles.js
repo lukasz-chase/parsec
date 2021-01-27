@@ -13,13 +13,13 @@ const GlobalStyles = createGlobalStyle`
     background-color: black;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
     background-size: cover;
     @media screen and (max-width: 1800px) {
     background-position: 0% 50%;
   }
     @media screen and (max-width: 880px) {
-    background-position: 63% 50%;
+    background-position: 60% 50%;
   }
 
 }

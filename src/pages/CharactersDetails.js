@@ -91,7 +91,8 @@ const DetailsPageComponent = styled.div`
       img {
         height: 25vw;
         @media screen and (max-width: 880px) {
-          height: 17rem;
+          height: 13rem;
+          width: 13rem;
         }
       }
     }
@@ -102,7 +103,7 @@ const DetailsPageComponent = styled.div`
       font-size: 1.5rem;
       padding: 0rem 1rem;
       @media screen and (max-width: 880px) {
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
       .detail {
         padding: 1rem 0;
