@@ -217,6 +217,8 @@ const WholePage = styled.div`
     display: flex;
     justify-content: center;
     span {
+      color: white;
+      text-shadow: 1px 1px black;
       b {
         color: #d2bc00;
       }

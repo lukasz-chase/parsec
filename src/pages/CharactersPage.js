@@ -24,14 +24,11 @@ const CharactersPage = ({ darkModeState }) => {
 
 const CharactersPageComponent = styled.div`
   background-color: black;
-  background-image: url("https://images2.alphacoders.com/960/thumb-1920-960714.jpg");
+  background-image: url("https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/04/rick-and-morty-couch-header.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  @media screen and (max-width: 880px) {
-    background-position: 88% 0%;
-  }
 `;
 
 export default CharactersPage;
