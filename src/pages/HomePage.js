@@ -110,13 +110,14 @@ const HomePageComponent = styled.div`
       background-position: center;
     }
     .card-location {
-      background-image: url("https://static.wikia.nocookie.net/rickandmorty/images/2/2e/S2e5_bird_world.png/revision/latest?cb=20160926033803");
+      background-image: url("https://static.wikia.nocookie.net/rickandmorty/images/2/2e/S2e5_bird_world.png/revision/latest/scale-to-width-down/1000?cb=20160926033803");
       background-position: center;
       background-size: cover;
     }
     .card-episode {
-      background-image: url("https://images.squarespace-cdn.com/content/v1/54fc8146e4b02a22841f4df7/1572526237662-KHRA3V0X1YKLVCU9E9K0/ke17ZwdGBToddI8pDm48kAJsswp0EXV6qc0SOJ8DOsUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKc_E7dXkCi7l7eF32s1E_vQW45WD95yMX6bcbEP6L1pnbQgytvpF9JKWwbDEjqe30p/image-asset.jpeg");
+      background-image: url("https://image.winudf.com/v2/image/Y29tLnZhbGVudGluLnJpY2thbmRtb3J0eV9zY3JlZW5fNl8xNTMwOTA2OTAyXzA0Nw/screen-6.jpg?fakeurl=1&type=.jpg");
       background-position: center;
+      background-size: cover;
     }
   }
 `;
