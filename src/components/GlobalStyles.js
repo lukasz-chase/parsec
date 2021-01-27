@@ -15,9 +15,13 @@ const GlobalStyles = createGlobalStyle`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    @media screen and (max-width: 880px) {
-    background-position: 62% 0%;
+    @media screen and (max-width: 1800px) {
+    background-position: 0% 50%;
   }
+    @media screen and (max-width: 880px) {
+    background-position: 63% 50%;
+  }
+
 }
 .link{
     text-decoration:none;

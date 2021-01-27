@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 //axios
 import axios from "axios";
 //url
-import { specificCharacterUrl } from "../api";
+import { specificUrl } from "../api";
 //link
 import { Link } from "react-router-dom";
 //styling
@@ -12,16 +12,14 @@ const Character = ({ id }) => {
   //state
   const [char, setChar] = useState(null);
   useEffect(() => {
-    axios.get(specificCharacterUrl(id)).then((res) => setChar(res.data));
+    axios.get(specificUrl(`character/${id}`)).then((res) => setChar(res.data));
   }, [id]);
   return (
     <CharacterComponent>
       {char && (
-        <span>
-          <Link className="one-character" to={`/character/${id}`}>
-            {char.name}
-          </Link>
-        </span>
+        <Link className="one-character" to={`/character/${id}`}>
+          {char.name}
+        </Link>
       )}
     </CharacterComponent>
   );

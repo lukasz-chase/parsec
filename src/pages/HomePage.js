@@ -86,7 +86,7 @@ const HomePageComponent = styled.div`
       color: #80f5ef;
       font-weight: bold;
       text-shadow: 1px 1px black;
-      background-color: black;
+      border-radius: 2rem;
       &:hover {
         transform: scale(1.1);
       }

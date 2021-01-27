@@ -32,20 +32,25 @@ const EpisodesPage = ({ darkModeState }) => {
       .get(episodesUrl(page, name, episode))
       .then((res) => setEpisodes(res.data));
   }, [page, name, episode]);
+  //handlers
+  //pagination handler
   const pagesHandler = (e, v) => {
     setPage(v);
     window.scrollTo(0, 0);
   };
+  //input handler
   const inputHandler = (e) => {
     e.preventDefault();
     setTextInput(e.target.value);
     setName(textInput);
   };
+  //form handler
   const formHandler = (e) => {
     e.preventDefault();
     setName(textInput);
     setTextInput("");
   };
+  //episode number handler
   function numberHandler(e) {
     setEpisode(e.target.value);
   }
@@ -61,7 +66,6 @@ const EpisodesPage = ({ darkModeState }) => {
         <div className="page-input">
           <form onSubmit={formHandler}>
             <TextField
-              id="standard-adornment-password"
               label="Search by name"
               color="secondary"
               className="input-field"
@@ -105,11 +109,7 @@ const EpisodesPage = ({ darkModeState }) => {
                   color: darkModeState ? "rgba(255, 255, 255, 0.568)" : "white",
                 }}
               >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <span className="episodeNumber">{episode.episode}</span>
                   {episode.name}
                 </AccordionSummary>
@@ -154,17 +154,17 @@ const EpisodesPage = ({ darkModeState }) => {
 const EpisodesPageComponent = styled.div`
   padding: 5rem 0;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 14rem;
   background-color: black;
   background-image: url("https://images4.alphacoders.com/633/thumb-1920-633222.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding-bottom: 14rem;
   @media screen and (max-width: 880px) {
     background-position: 58% 0%;
   }
@@ -206,7 +206,7 @@ const EpisodesPageComponent = styled.div`
     justify-content: center;
     align-items: center;
     .episodesList {
-      width: 25%;
+      width: 35%;
       @media screen and (max-width: 1200px) {
         width: 90%;
       }

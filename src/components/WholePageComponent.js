@@ -36,23 +36,28 @@ const WholePageComponent = ({
     axios.get(url(page, name, status)).then((res) => setData(res.data));
   }, [url, page, name, status]);
   //handlers
-  const pagesHandler = (event, value) => {
-    setPage(value);
+  //pagination handler
+  const pagesHandler = (e, v) => {
+    setPage(v);
     window.scrollTo(0, 0);
   };
+  //text input handler
   const inputHandler = (e) => {
     e.preventDefault();
     setTextInput(e.target.value);
     setName(textInput);
   };
+  //form handler
   const formHandler = (e) => {
     e.preventDefault();
     setName(textInput);
     setTextInput("");
   };
+  //select handler
   const selectHandler = () => {
     setStatus(selectRef.current.options[selectRef.current.selectedIndex].value);
   };
+  //status(alive, dead, unknown) handler
   const statusHandler = (status) => {
     if (status === "Alive") {
       return (
@@ -67,6 +72,7 @@ const WholePageComponent = ({
       );
     }
   };
+  //styling pagination
   const useStyles = makeStyles(() => ({
     ul: {
       "& .MuiPaginationItem-root": {
@@ -79,15 +85,14 @@ const WholePageComponent = ({
     <WholePage>
       <div className="WholePage-header">
         <span>
-          Here you can find all <b>{item}</b> that were shown in any{" "}
-          <b>rick and morty</b> related movies
+          Here you can find all <b>{item}</b> that were shown in{" "}
+          <b>rick and morty</b> tv show
         </span>
       </div>
       <div className="WholePage-sort">
         <div className="page-input">
           <form onSubmit={formHandler}>
             <TextField
-              id="standard-adornment-password"
               label="Search by name"
               color="secondary"
               className="input-field"

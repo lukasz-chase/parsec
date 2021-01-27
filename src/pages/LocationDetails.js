@@ -78,21 +78,23 @@ const LocationDetailsComponent = styled.div`
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  @media screen and (max-width: 880px) {
+    background-position: 83% 0%;
   }
   .LocationDetails-article {
     width: 45vw;
     display: flex;
     align-items: center;
-    flex-direction:column;
+    flex-direction: column;
     font-size: 1.5rem;
-    flex-wrap:wrap;
-    .header-text{
-      font-size:4rem;
+    flex-wrap: wrap;
+    .header-text {
+      font-size: 4rem;
       @media screen and (max-width: 880px) {
-          font-size: 2rem;
-        }
+        font-size: 2rem;
+      }
     }
-     .location-details {
+    .location-details {
       display: flex;
       flex-direction: column;
       .detail {
@@ -104,11 +106,11 @@ const LocationDetailsComponent = styled.div`
       }
       span {
         color: #97ce4c;
-        padding-left:6px;
+        padding-left: 6px;
       }
       .residents {
         display: flex;
-        flex-wrap: wrap;        
+        flex-wrap: wrap;
         @media screen and (max-width: 880px) {
           font-size: 1rem;
         }
