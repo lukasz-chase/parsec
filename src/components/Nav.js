@@ -33,6 +33,7 @@ const Nav = ({ darkModeState, setDarkModeState }) => {
               onClick={() => {
                 SetOpenMenu(!openMenu);
               }}
+              style={{ color: "black" }}
             />
           ) : (
             <MenuIcon
@@ -130,8 +131,8 @@ const NavComponent = styled.div`
     left: 0;
     top: 0;
     .hamburgerMenu-icon {
-      padding-top: 5px;
-      padding-left: 15px;
+      padding: 1rem;
+      z-index: 7;
       .icon {
         &:hover {
           cursor: pointer;
@@ -139,18 +140,21 @@ const NavComponent = styled.div`
       }
     }
     .hamburgerMenu-list {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: 15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
       background-image: url("https://i.imgur.com/NQnPLKg.png");
       background-color: black;
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
       background-position: center;
-      min-height: 95vh;
-      width: 15rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 5;
       ul {
         height: 100%;
         width: 100%;
@@ -161,18 +165,19 @@ const NavComponent = styled.div`
         li {
           display: flex;
           justify-content: center;
+          align-items: center;
           list-style: none;
           padding: 1rem 0rem;
           margin-bottom: 1rem;
           font-size: 1.5rem;
           background-color: rgba(255, 255, 255, 0.6);
-
           border-radius: 1rem;
           &:hover {
             cursor: pointer;
           }
-          @media screen and (max-height: 600px) {
-            padding: 1rem 0rem;
+          @media screen and (max-width: 880px) {
+            font-size: 1rem;
+            padding: 0.5rem 0rem;
           }
         }
       }

@@ -24,7 +24,7 @@ const LocationsPage = ({ darkModeState }) => {
 
 const LocationsPageComponent = styled.div`
   background-color: black;
-  background-image: url("https://static.wikia.nocookie.net/rickandmorty/images/e/e1/S1e10_hideout_planet.png/revision/latest?cb=20160911012541");
+  background-image: url("https://images5.alphacoders.com/633/thumb-1920-633151.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

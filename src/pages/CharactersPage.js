@@ -24,7 +24,7 @@ const CharactersPage = ({ darkModeState }) => {
 
 const CharactersPageComponent = styled.div`
   background-color: black;
-  background-image: url("https://images2.alphacoders.com/633/thumb-1920-633162.jpg");
+  background-image: url("https://images2.alphacoders.com/960/thumb-1920-960714.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

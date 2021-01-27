@@ -217,10 +217,12 @@ const WholePage = styled.div`
     .page-input {
       background-color: white;
       padding: 0rem 1rem;
+      border-radius: 1rem;
     }
     .page-select {
       padding: 1rem;
       select {
+        border-radius: 1rem;
         padding: 7px;
         font-size: 1.5rem;
         font-family: "Roboto", sans-serif;
@@ -228,6 +230,7 @@ const WholePage = styled.div`
           cursor: pointer;
         }
         option {
+          border-radius: 1rem;
           &:checked {
             background: #97ce4c !important;
           }
@@ -261,8 +264,8 @@ const WholePage = styled.div`
         width: 20rem;
       }
       @media screen and (max-width: 880px) {
-        height: 9rem;
-        width: 14rem;
+        height: 7rem;
+        width: 12rem;
         margin: 0.2rem;
       }
       .card-image {
@@ -278,7 +281,7 @@ const WholePage = styled.div`
             height: 10rem;
           }
           @media screen and (max-width: 880px) {
-            height: 9rem;
+            height: 7rem;
           }
         }
       }

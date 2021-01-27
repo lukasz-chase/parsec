@@ -164,7 +164,7 @@ const EpisodesPageComponent = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 12rem;
+  padding-bottom: 14rem;
   .EpisodesPage-header {
     display: flex;
     justify-content: center;

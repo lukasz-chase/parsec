@@ -11,9 +11,8 @@ const HomePage = () => {
     <HomePageComponent>
       <div className="homePage-banner">
         <span style={{ color: "#baff5b" }}>Parsec</span> is a rick and morty
-        database that includes information on <span>people</span>,{" "}
-        <span>films</span>, <span>star ships</span>, <span>vehicles</span>,{" "}
-        <span>species</span> and <span>planets</span> from rick and morty
+        database that includes information on <span>characters</span>,{" "}
+        <span>locations</span>, and <span>episodes</span> from rick and morty
         universe.
       </div>
       <div className="homePage-cards">
@@ -56,7 +55,7 @@ const HomePageComponent = styled.div`
   text-shadow: 1px 1px black;
   font-size: 1.5rem;
   padding-top: 5rem;
-  padding-bottom: 10rem;
+  padding-bottom: 14rem;
   .homePage-banner {
     text-align: center;
     span {
@@ -71,7 +70,7 @@ const HomePageComponent = styled.div`
     align-items: center;
     padding: 1rem 0rem;
     flex-wrap: wrap;
-    @media screen and (max-height: 600px) {
+    @media screen and (max-width: 880px) {
       min-height: 30rem;
     }
     .card {
@@ -91,7 +90,7 @@ const HomePageComponent = styled.div`
       &:hover {
         transform: scale(1.1);
       }
-      @media screen and (max-height: 600px) {
+      @media screen and (max-width: 880px) {
         width: 8rem;
         min-height: 20rem;
         &:hover {
