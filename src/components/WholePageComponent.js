@@ -6,13 +6,13 @@ import styled from "styled-components";
 //icon
 import SearchIcon from "@material-ui/icons/Search";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
-import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 //input
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 //material ui
 import Button from "@material-ui/core/Button";
 import Pagination from "@material-ui/lab/Pagination";
+import { makeStyles } from "@material-ui/core/styles";
 //link
 import { Link } from "react-router-dom";
 
@@ -56,16 +56,25 @@ const WholePageComponent = ({
   const statusHandler = (status) => {
     if (status === "Alive") {
       return (
-        <FiberManualRecordIcon style={{ color: "green" }} fontSize="small" />
+        <FiberManualRecordIcon style={{ color: "green", fontSize: "10" }} />
       );
-    } else if (status === "unknown") {
-      return <HelpOutlineIcon fontSize="small" />;
     } else if (status === "Dead") {
       return (
-        <FiberManualRecordIcon style={{ color: "red" }} fontSize="small" />
+        <FiberManualRecordIcon
+          style={{ color: "red", fontSize: "10" }}
+          fontSize="small"
+        />
       );
     }
   };
+  const useStyles = makeStyles(() => ({
+    ul: {
+      "& .MuiPaginationItem-root": {
+        color: "#fff",
+      },
+    },
+  }));
+  const classes = useStyles();
   return (
     <WholePage>
       <div className="WholePage-header">
@@ -109,7 +118,6 @@ const WholePageComponent = ({
       <div className="WholePage-article">
         {data ? (
           <div className="WholePage-cards">
-            {console.log(data)}
             {data.results.map((results) => (
               <div
                 className="card"
@@ -134,10 +142,10 @@ const WholePageComponent = ({
                   {results.species && (
                     <span>
                       {statusHandler(results.status)}
-                      {results.status} - {results.species}
+                      {results.status} - <b> {results.species}</b>
                     </span>
                   )}
-                  {results.type && (
+                  {locations && (
                     <span>
                       <b>Type:</b> {results.type}
                     </span>
@@ -177,6 +185,7 @@ const WholePageComponent = ({
           <Pagination
             count={data.info.pages}
             color="primary"
+            classes={{ ul: classes.ul }}
             className="choosePage"
             onChange={pagesHandler}
           />
@@ -296,9 +305,13 @@ const WholePage = styled.div`
           @media screen and (max-width: 1200px) {
             font-size: 1rem;
           }
+          @media screen and (max-width: 880px) {
+            font-size: 0.7rem;
+          }
         }
         b {
-          color: #35abe2;
+          color: #97ce4c;
+          padding: 0 4px;
         }
         span {
           display: flex;
@@ -312,6 +325,7 @@ const WholePage = styled.div`
           }
           @media screen and (max-width: 880px) {
             font-size: 0.5rem;
+            padding: 2px 0;
           }
         }
       }
@@ -331,7 +345,6 @@ const WholePage = styled.div`
       }
     }
     .choosePage {
-      background-color: white;
       margin: 1rem 0rem;
     }
   }

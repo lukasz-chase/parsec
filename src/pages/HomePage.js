@@ -91,8 +91,9 @@ const HomePageComponent = styled.div`
         transform: scale(1.1);
       }
       @media screen and (max-width: 880px) {
-        width: 8rem;
-        min-height: 20rem;
+        width: 6rem;
+        min-height: 26rem;
+        font-size: 1rem;
         &:hover {
           transform: none;
         }

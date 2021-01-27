@@ -165,6 +165,9 @@ const EpisodesPageComponent = styled.div`
   align-items: center;
   flex-direction: column;
   padding-bottom: 14rem;
+  @media screen and (max-width: 880px) {
+    background-position: 58% 0%;
+  }
   .EpisodesPage-header {
     display: flex;
     justify-content: center;
@@ -184,12 +187,15 @@ const EpisodesPageComponent = styled.div`
     align-items: center;
     .input-field {
       background-color: white;
+      border-radius: 1rem;
+      padding: 0rem 1rem;
     }
     .page-slider {
       padding: 0rem 1rem;
       .number-input {
         width: 6.5rem;
         height: 2.9rem;
+        border-radius: 1rem;
         font-size: 1.5rem;
       }
     }
@@ -202,7 +208,7 @@ const EpisodesPageComponent = styled.div`
     .episodesList {
       width: 25%;
       @media screen and (max-width: 1200px) {
-        width: 100%;
+        width: 90%;
       }
       .accordion {
         width: 100%;
@@ -214,6 +220,7 @@ const EpisodesPageComponent = styled.div`
     justify-content: center;
     align-items: center;
     background-color: white;
+    border-radius: 1rem;
   }
   .episodeNumber {
     padding-right: 1rem;

@@ -29,6 +29,9 @@ const CharactersPageComponent = styled.div`
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  @media screen and (max-width: 880px) {
+    background-position: 88% 0%;
+  }
 `;
 
 export default CharactersPage;

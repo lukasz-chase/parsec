@@ -32,7 +32,6 @@ const CharactersDetails = ({ darkModeState }) => {
     >
       {data && (
         <div className="characters-article">
-          {console.log(data)}
           <div className="characters-img">
             <img src={data.image} alt={data.name} />
           </div>
@@ -83,6 +82,9 @@ const DetailsPageComponent = styled.div`
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  @media screen and (max-width: 880px) {
+    background-position: 80% 0%;
+  }
   .characters-article {
     display: flex;
     .characters-img {

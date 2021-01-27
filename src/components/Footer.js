@@ -68,7 +68,6 @@ const FooterComponent = styled.div`
     .icon {
       margin: 0rem 1rem;
       transition: 0.2s ease-in all;
-      background-color: black;
       &:hover {
         color: #b4b4b4;
       }
