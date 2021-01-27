@@ -16,7 +16,6 @@ import DarkMode from "../components/darkMode";
 
 const Nav = ({ darkModeState, setDarkModeState }) => {
   const [openMenu, SetOpenMenu] = useState(false);
-  console.log(darkModeState);
   //get the current location
   const location = useLocation();
   return (

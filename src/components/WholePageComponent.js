@@ -5,6 +5,8 @@ import axios from "axios";
 import styled from "styled-components";
 //icon
 import SearchIcon from "@material-ui/icons/Search";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 //input
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -50,6 +52,19 @@ const WholePageComponent = ({
   };
   const selectHandler = () => {
     setStatus(selectRef.current.options[selectRef.current.selectedIndex].value);
+  };
+  const statusHandler = (status) => {
+    if (status === "Alive") {
+      return (
+        <FiberManualRecordIcon style={{ color: "green" }} fontSize="small" />
+      );
+    } else if (status === "unknown") {
+      return <HelpOutlineIcon fontSize="small" />;
+    } else if (status === "Dead") {
+      return (
+        <FiberManualRecordIcon style={{ color: "red" }} fontSize="small" />
+      );
+    }
   };
   return (
     <WholePage>
@@ -101,8 +116,8 @@ const WholePageComponent = ({
                 key={results.id}
                 style={{
                   backgroundColor: darkModeState
-                    ? "rgba(255, 255, 255, 0.4)"
-                    : "rgba(0, 0, 0, 0.5)",
+                    ? "rgba(0, 0, 0, 0.9)"
+                    : "rgba(0, 0, 0, 0.7)",
                 }}
               >
                 {results.image && (
@@ -115,26 +130,16 @@ const WholePageComponent = ({
                   style={{ width: locations ? "100%" : "50%" }}
                 >
                   <h1>{results.name}</h1>
-                  {results.gender && (
+
+                  {results.species && (
                     <span>
-                      <b>gender:</b> {results.gender}
+                      {statusHandler(results.status)}
+                      {results.status} - {results.species}
                     </span>
                   )}
                   {results.type && (
                     <span>
                       <b>Type:</b> {results.type}
-                    </span>
-                  )}
-                  {results.species && (
-                    <span>
-                      <b>species:</b>
-                      {results.species}
-                    </span>
-                  )}
-                  {results.status && (
-                    <span>
-                      <b>status:</b>
-                      {results.status}
                     </span>
                   )}
                   {results.dimension && (
@@ -244,41 +249,34 @@ const WholePage = styled.div`
       width: 100%;
     }
     .card {
-      min-height: 20rem;
-      width: 35rem;
+      height: 15rem;
+      width: 30rem;
       border-radius: 2rem;
       margin: 1rem;
       display: flex;
       align-items: center;
       text-align: center;
-
       @media screen and (max-width: 1200px) {
-        min-height: 10rem;
-        width: 25rem;
-        font-size: 1rem;
+        height: 10rem;
+        width: 20rem;
       }
       @media screen and (max-width: 880px) {
-        height: 5rem;
+        height: 8rem;
         width: 14rem;
-        font-size: 0.6rem;
         margin: 0.2rem;
       }
       .card-image {
         width: 50%;
         img {
-          height: 20rem;
+          height: 15rem;
           object-fit: cover;
           width: 100%;
           border-radius: 2rem 0 0 2rem;
           @media screen and (max-width: 1200px) {
-            min-height: 10rem;
-            width: 12rem;
-            object-fit: cover;
+            height: 10rem;
           }
           @media screen and (max-width: 880px) {
-            height: 5rem;
-            width: 7rem;
-            object-fit: cover;
+            height: 7.7rem;
           }
         }
       }
@@ -288,23 +286,41 @@ const WholePage = styled.div`
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        h2 {
-          font-size: 1.5rem;
+        h1 {
+          font-size: 2rem;
+          @media screen and (max-width: 1200px) {
+            font-size: 1rem;
+          }
         }
         b {
           color: #35abe2;
         }
         span {
+          display: flex;
+          align-items: center;
+          font-size: 1rem;
           color: #b7e4f9ff;
-          padding: 5px 0;
+          padding: 10px 0;
+          @media screen and (max-width: 1200px) {
+            font-size: 0.7rem;
+          }
+          @media screen and (max-width: 880px) {
+            font-size: 0.5rem;
+          }
         }
       }
       .button {
         color: black;
+        height: 3rem;
+        width: 7rem;
+        padding: 0 !important;
+        @media screen and (max-width: 1200px) {
+          height: 2rem;
+          width: 5rem;
+        }
         @media screen and (max-width: 880px) {
-          height: 1.5rem;
+          height: 1rem;
           width: 1rem;
-          font-size: 0.5rem;
         }
       }
     }

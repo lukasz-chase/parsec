@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 import { Route } from "react-router-dom";
 //pages
 import HomePage from "./pages/HomePage";
-import PeoplePage from "./pages/PeoplePage";
+import CharactersPage from "./pages/CharactersPage";
 import LocationsPage from "./pages/LocationsPage";
 import EpisodesPage from "./pages/EpisodesPage";
 import DetailsPage from "./pages/detailsPage";
@@ -45,7 +45,7 @@ function App() {
           <HomePage />
         </Route>
         <Route path="/characters" exact>
-          <PeoplePage darkModeState={darkModeState} />
+          <CharactersPage darkModeState={darkModeState} />
         </Route>
         <Route path="/locations" exact>
           <LocationsPage darkModeState={darkModeState} />

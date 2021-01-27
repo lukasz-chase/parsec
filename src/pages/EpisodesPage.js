@@ -32,9 +32,8 @@ const EpisodesPage = ({ darkModeState }) => {
       .get(episodesUrl(page, name, episode))
       .then((res) => setEpisodes(res.data));
   }, [page, name, episode]);
-  //handlers
-  const pagesHandler = (event, value) => {
-    setPage(value);
+  const pagesHandler = (e, v) => {
+    setPage(v);
     window.scrollTo(0, 0);
   };
   const inputHandler = (e) => {
@@ -47,6 +46,9 @@ const EpisodesPage = ({ darkModeState }) => {
     setName(textInput);
     setTextInput("");
   };
+  function numberHandler(e) {
+    setEpisode(e.target.value);
+  }
   return (
     <EpisodesPageComponent
       style={{ backgroundBlendMode: darkModeState ? "luminosity" : "normal" }}
@@ -76,20 +78,31 @@ const EpisodesPage = ({ darkModeState }) => {
             />
           </form>
         </div>
+        {episodes && (
+          <div className="page-slider">
+            <input
+              type="number"
+              className="number-input"
+              min="1"
+              max="41"
+              placeholder="Ep.num."
+              onChange={numberHandler}
+            />
+          </div>
+        )}
       </div>
       <div className="EpisodesPage-article">
         {episodes && (
           <div className="episodesList">
-            {console.log(episodes)}
             {episodes.results.map((episode) => (
               <Accordion
                 key={episode.id}
                 className="accordion"
                 style={{
                   backgroundColor: darkModeState
-                    ? "rgba(255, 255, 255, 0.568)"
-                    : "rgba(12, 12, 12, 0.8)",
-                  color: darkModeState ? "black" : "white",
+                    ? "rgba(0, 0, 0, 0.8)"
+                    : "rgba(0, 0, 0, 0.5)",
+                  color: darkModeState ? "rgba(255, 255, 255, 0.568)" : "white",
                 }}
               >
                 <AccordionSummary
@@ -156,6 +169,7 @@ const EpisodesPageComponent = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     font-size: 1.5rem;
     color: white;
     text-shadow: 1px 1px black;
@@ -170,6 +184,14 @@ const EpisodesPageComponent = styled.div`
     align-items: center;
     .input-field {
       background-color: white;
+    }
+    .page-slider {
+      padding: 0rem 1rem;
+      .number-input {
+        width: 6.5rem;
+        height: 2.9rem;
+        font-size: 1.5rem;
+      }
     }
   }
   .EpisodesPage-article {
