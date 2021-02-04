@@ -1,8 +1,10 @@
+check it live on: https://parsec.vercel.app/
+
 To run this app on your computer follow these steps:
 
 1.run in your cmd - git clone  https://github.com/luki752/parsec.git
 
-2.when its cloned run in your command - npm install
+2.when its cloned run in your cmd - npm install
 
 3.after everything is installed you can run the project - npm start
 
@@ -23,5 +25,5 @@ similary to characters page if you click on location you go to location details 
 On episodes page you can look through every episode, search by name and episode number for example S01E03.
 ![parsec7](https://user-images.githubusercontent.com/58302409/106916453-7a58bd00-6707-11eb-9dad-58c940a2e22e.png)
 
-check it live on: https://parsec.vercel.app/
+
 
