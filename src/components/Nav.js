@@ -155,6 +155,7 @@ const NavComponent = styled.div`
       background-position: center;
       background-size: cover;
       background-position: center;
+      transition: 0.3s ease-in-out;
       ul {
         height: 100%;
         width: 100%;

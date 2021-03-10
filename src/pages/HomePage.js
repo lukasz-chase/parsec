@@ -106,6 +106,9 @@ const HomePageComponent = styled.div`
         border-radius: 1rem;
         padding: 1rem 1rem;
         margin-bottom: 10px;
+        @media screen and (max-width: 800px) {
+          padding: 0.5rem;
+        }
       }
     }
     .card-characters {

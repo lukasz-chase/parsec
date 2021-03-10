@@ -86,24 +86,18 @@ const CharactersDetails = ({ darkModeState, lastPage }) => {
 };
 
 const DetailsPageComponent = styled.div`
-  min-height: 100vh;
+  height: 110vh;
   padding: 12rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: black;
-  background-image: url("https://scontent.fpoz4-1.fna.fbcdn.net/v/t1.15752-9/143353938_2720157408235615_4299837984798847925_n.png?_nc_cat=106&ccb=2&_nc_sid=ae9488&_nc_ohc=TEgDWRnF0P0AX8kP5pj&_nc_ht=scontent.fpoz4-1.fna&oh=7070d26b1356b16b1ae9ab51999df1ff&oe=603454E0");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  @media screen and (max-width: 880px) {
-    background-position: 80% 0%;
-  }
+  background-color: #000000;
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
   .go-back-button {
     font-size: 1rem;
     margin: 1rem 0rem;
+    background-color: rgba(0, 0, 0, 0.6);
     @media screen and (max-width: 880px) {
       font-size: 0.5rem;
     }
@@ -128,9 +122,11 @@ const DetailsPageComponent = styled.div`
       padding: 0rem 1rem;
       @media screen and (max-width: 880px) {
         font-size: 0.8rem;
+        padding: 0 0.5rem;
       }
       .detail {
         padding: 1rem 0;
+        color: black;
         @media screen and (max-width: 880px) {
           padding: 0.2rem 0;
         }
