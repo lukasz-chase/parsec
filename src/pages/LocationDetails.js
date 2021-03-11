@@ -36,9 +36,7 @@ const LocationDetails = ({ darkModeState, lastPage, setLastPage }) => {
   return (
     <LocationDetailsComponent
       style={{
-        color: darkModeState
-          ? "rgba(255, 255, 255, 0.7)"
-          : "rgba(255, 255, 255, 0.9)",
+        color: darkModeState ? "rgba(0, 0, 0, 0.7)" : "rgba(0, 0, 0, 0.9)",
         backgroundBlendMode: darkModeState ? "luminosity" : "normal",
       }}
     >
@@ -110,15 +108,12 @@ const LocationDetailsComponent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: black;
-  background-image: url("https://images2.alphacoders.com/658/658977.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
+  background-color: #000000;
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
   .go-back-button {
     font-size: 1rem;
     margin: 1rem 0rem;
+    background-color: rgba(0, 0, 0, 0.6);
     @media screen and (max-width: 880px) {
       font-size: 0.5rem;
     }
@@ -148,6 +143,7 @@ const LocationDetailsComponent = styled.div`
       }
       span {
         color: #97ce4c;
+        text-shadow: 1px 1px black;
         padding-left: 6px;
       }
       .residents {
