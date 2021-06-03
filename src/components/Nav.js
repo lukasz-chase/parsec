@@ -18,6 +18,11 @@ const Nav = ({ darkModeState, setDarkModeState }) => {
   const [openMenu, SetOpenMenu] = useState(false);
   //get the current location
   const location = useLocation();
+  //handlers
+  const linkHandler = () => {
+    window.scrollTo(0, 0);
+    SetOpenMenu(!openMenu);
+  };
   return (
     <NavComponent style={{ pointerEvents: openMenu ? "all" : "none" }}>
       <DarkMode
@@ -61,6 +66,7 @@ const Nav = ({ darkModeState, setDarkModeState }) => {
               style={{
                 color: location.pathname === "/" ? "#0c08f7" : "black",
               }}
+              onClick={() => linkHandler()}
             >
               <li>
                 <HomeIcon /> Home
@@ -73,6 +79,7 @@ const Nav = ({ darkModeState, setDarkModeState }) => {
                 color:
                   location.pathname === "/characters" ? "#0c08f7" : "black",
               }}
+              onClick={() => linkHandler()}
             >
               <li>
                 <PeopleIcon /> Characters
@@ -84,6 +91,7 @@ const Nav = ({ darkModeState, setDarkModeState }) => {
               style={{
                 color: location.pathname === "/locations" ? "#0c08f7" : "black",
               }}
+              onClick={() => linkHandler()}
             >
               <li>
                 <LocationOnIcon /> Locations
@@ -95,6 +103,7 @@ const Nav = ({ darkModeState, setDarkModeState }) => {
               style={{
                 color: location.pathname === "/episodes" ? "#0c08f7" : "black",
               }}
+              onClick={() => linkHandler()}
             >
               <li>
                 <TvIcon /> Episodes
