@@ -13,26 +13,22 @@ import Character from "../components/character";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Button from "@material-ui/core/Button";
 //link
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-const LocationDetails = ({ darkModeState, lastPage, setLastPage }) => {
+const LocationDetails = ({ darkModeState }) => {
   //state
   const [data, setData] = useState(null);
-  const [previousPage, setPreviousPage] = useState(null);
-  //get the current location
+  const history = useHistory();
   const location = useLocation();
   const pathId =
     location.pathname.split("/", 3)[1] +
     "/" +
     location.pathname.split("/", 3)[2];
-  useEffect(() => {
-    setPreviousPage(lastPage);
-  }, [setPreviousPage, lastPage]);
+
   //useEffect
   useEffect(() => {
     axios.get(specificUrl(pathId)).then((res) => setData(res.data));
-    setLastPage(`/${pathId}`);
-  }, [pathId, setLastPage]);
+  }, [pathId]);
   return (
     <LocationDetailsComponent
       style={{
@@ -40,33 +36,15 @@ const LocationDetails = ({ darkModeState, lastPage, setLastPage }) => {
         backgroundBlendMode: darkModeState ? "luminosity" : "normal",
       }}
     >
-      {previousPage === lastPage ? (
-        <Link to="/locations" className="link">
-          <Button
-            variant="outlined"
-            color="primary"
-            startIcon={<ArrowBackIcon />}
-            className="go-back-button"
-          >
-            Go Back
-          </Button>
-        </Link>
-      ) : (
-        <>
-          {previousPage && (
-            <Link to={previousPage} className="link">
-              <Button
-                variant="outlined"
-                color="primary"
-                startIcon={<ArrowBackIcon />}
-                className="go-back-button"
-              >
-                Go Back
-              </Button>
-            </Link>
-          )}
-        </>
-      )}
+      <Button
+        variant="outlined"
+        color="primary"
+        startIcon={<ArrowBackIcon />}
+        className="go-back-button"
+        onClick={() => history.goBack()}
+      >
+        Go Back
+      </Button>
 
       {data && (
         <div className="LocationDetails-article">

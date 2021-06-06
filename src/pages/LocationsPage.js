@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 //url
 import { locationsUrl } from "../api";
 //styling
@@ -6,11 +6,9 @@ import styled from "styled-components";
 //components
 import WholePageComponent from "../components/WholePageComponent";
 
-const LocationsPage = ({ darkModeState, lastPage, setLastPage }) => {
+const LocationsPage = ({ darkModeState }) => {
   const locations = true;
-  useEffect(() => {
-    setLastPage("/locations");
-  }, [setLastPage]);
+
   return (
     <LocationsPageComponent
       style={{ backgroundBlendMode: darkModeState ? "luminosity" : "normal" }}

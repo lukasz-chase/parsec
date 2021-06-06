@@ -18,7 +18,6 @@ import CharactersDetails from "./pages/CharactersDetails";
 function App() {
   //state
   const [darkModeState, setDarkModeState] = useState(false);
-  const [lastPage, setLastPage] = useState(false);
   //theme
   const theme = createMuiTheme({
     palette: {
@@ -45,39 +44,19 @@ function App() {
           <HomePage />
         </Route>
         <Route path="/characters" exact>
-          <CharactersPage
-            darkModeState={darkModeState}
-            lastPage={lastPage}
-            setLastPage={setLastPage}
-          />
+          <CharactersPage darkModeState={darkModeState} />
         </Route>
         <Route path="/locations" exact>
-          <LocationsPage
-            darkModeState={darkModeState}
-            lastPage={lastPage}
-            setLastPage={setLastPage}
-          />
+          <LocationsPage darkModeState={darkModeState} />
         </Route>
         <Route path="/episodes" exact>
-          <EpisodesPage
-            darkModeState={darkModeState}
-            lastPage={lastPage}
-            setLastPage={setLastPage}
-          />
+          <EpisodesPage darkModeState={darkModeState} />
         </Route>
         <Route path="/location/:id" exact>
-          <LocationDetails
-            darkModeState={darkModeState}
-            lastPage={lastPage}
-            setLastPage={setLastPage}
-          />
+          <LocationDetails darkModeState={darkModeState} />
         </Route>
         <Route path="/character/:id" exact>
-          <CharactersDetails
-            darkModeState={darkModeState}
-            lastPage={lastPage}
-            setLastPage={setLastPage}
-          />
+          <CharactersDetails darkModeState={darkModeState} />
         </Route>
         <Footer />
       </ThemeProvider>

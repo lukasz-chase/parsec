@@ -11,13 +11,13 @@ import styled from "styled-components";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Button from "@material-ui/core/Button";
 //link
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-const CharactersDetails = ({ darkModeState, lastPage }) => {
-  console.log(lastPage);
+const CharactersDetails = ({ darkModeState }) => {
   //state
   const [data, setData] = useState(null);
   //get the current location
+  const history = useHistory();
   const location = useLocation();
   const pathId =
     location.pathname.split("/", 3)[1] +
@@ -36,16 +36,16 @@ const CharactersDetails = ({ darkModeState, lastPage }) => {
         backgroundBlendMode: darkModeState ? "luminosity" : "normal",
       }}
     >
-      <Link to={lastPage} className="link">
-        <Button
-          variant="outlined"
-          color="primary"
-          startIcon={<ArrowBackIcon />}
-          className="go-back-button"
-        >
-          Go Back
-        </Button>
-      </Link>
+      <Button
+        variant="outlined"
+        color="primary"
+        startIcon={<ArrowBackIcon />}
+        className="go-back-button"
+        onClick={() => history.goBack()}
+      >
+        Go Back
+      </Button>
+
       {data && (
         <div className="characters-article">
           <div className="characters-img">
