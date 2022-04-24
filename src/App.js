@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 //global styles
 import GlobalStyles from "./components/GlobalStyles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
@@ -14,10 +14,11 @@ import LocationsPage from "./pages/LocationsPage";
 import EpisodesPage from "./pages/EpisodesPage";
 import LocationDetails from "./pages/LocationDetails";
 import CharactersDetails from "./pages/CharactersDetails";
+//context
+import modeContext from "./modeContext";
 
 function App() {
-  //state
-  const [darkModeState, setDarkModeState] = useState(false);
+  const { darkModeState } = useContext(modeContext);
   //theme
   const theme = createMuiTheme({
     palette: {
@@ -36,27 +37,24 @@ function App() {
     >
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Nav
-          darkModeState={darkModeState}
-          setDarkModeState={setDarkModeState}
-        />
+        <Nav />
         <Route path="/" exact>
           <HomePage />
         </Route>
         <Route path="/characters" exact>
-          <CharactersPage darkModeState={darkModeState} />
+          <CharactersPage />
         </Route>
         <Route path="/locations" exact>
-          <LocationsPage darkModeState={darkModeState} />
+          <LocationsPage />
         </Route>
         <Route path="/episodes" exact>
-          <EpisodesPage darkModeState={darkModeState} />
+          <EpisodesPage />
         </Route>
         <Route path="/location/:id" exact>
-          <LocationDetails darkModeState={darkModeState} />
+          <LocationDetails />
         </Route>
         <Route path="/character/:id" exact>
-          <CharactersDetails darkModeState={darkModeState} />
+          <CharactersDetails />
         </Route>
         <Footer />
       </ThemeProvider>

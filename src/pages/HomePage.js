@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 //router
 import { Link } from "react-router-dom";
+//data
+import { homeLinks } from "../descriptions/homeLinks";
 
 const HomePage = () => {
   return (
@@ -16,33 +18,16 @@ const HomePage = () => {
         universe.
       </div>
       <div className="homePage-cards">
-        <Link to="/characters" className="link">
-          <div className="card card-characters">
-            <span className="card-text">Characters</span>
-
-            <Button variant="contained" color="primary" className="button">
-              View
-            </Button>
-          </div>
-        </Link>
-        <Link to="/locations" className="link">
-          <div className="card card-location">
-            <span className="card-text">Locations</span>
-
-            <Button variant="contained" color="primary" className="button">
-              View
-            </Button>
-          </div>
-        </Link>
-        <Link to="/episodes" className="link">
-          <div className="card card-episode">
-            <span className="card-text">Episodes</span>
-
-            <Button variant="contained" color="primary" className="button">
-              View
-            </Button>
-          </div>
-        </Link>
+        {homeLinks.map((card) => (
+          <Link to={card.link} className="link" key={card.label}>
+            <div className={`card ${card.className}`}>
+              <span className="card-text">{card.label}</span>
+              <Button variant="contained" color="primary" className="button">
+                View
+              </Button>
+            </div>
+          </Link>
+        ))}
       </div>
     </HomePageComponent>
   );

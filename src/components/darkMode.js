@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 //styling
 import styled from "styled-components";
 //material ui
 import Switch from "@material-ui/core/Switch";
 import Brightness3Icon from "@material-ui/icons/Brightness3";
 import WbSunnyIcon from "@material-ui/icons/WbSunny";
+//context
+import modeContext from "../modeContext";
 
-const DarkMode = ({ darkModeState, setDarkModeState }) => {
+const DarkMode = () => {
+  const { darkModeState, setDarkModeState } = useContext(modeContext);
   return (
     <DarkModeComponent>
       <div className="switch">

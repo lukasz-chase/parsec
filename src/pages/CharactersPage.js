@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 //url
 import { charactersUrl } from "../api";
 //styling
 import styled from "styled-components";
 //components
 import WholePageComponent from "../components/WholePageComponent";
+//context
+import modeContext from "../modeContext";
 
-const CharactersPage = ({ darkModeState }) => {
-  const characters = true;
-
+const CharactersPage = () => {
+  const { darkModeState } = useContext(modeContext);
   return (
     <CharactersPageComponent
       style={{ backgroundBlendMode: darkModeState ? "luminosity" : "normal" }}
@@ -17,7 +18,7 @@ const CharactersPage = ({ darkModeState }) => {
         darkModeState={darkModeState}
         url={charactersUrl}
         item={"characters"}
-        characters={characters}
+        characters={true}
       />
     </CharactersPageComponent>
   );

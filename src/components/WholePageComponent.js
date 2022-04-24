@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 //axios
 import axios from "axios";
 //styling
@@ -15,15 +15,12 @@ import Pagination from "@material-ui/lab/Pagination";
 import { makeStyles } from "@material-ui/core/styles";
 //link
 import { Link } from "react-router-dom";
+//context
+import modeContext from "../modeContext";
 
-const WholePageComponent = ({
-  url,
-  item,
-  characters,
-  locations,
-  darkModeState,
-}) => {
+const WholePageComponent = ({ url, item, characters, locations }) => {
   //state
+  const { darkModeState } = useContext(modeContext);
   const [data, setData] = useState(null);
   const [page, setPage] = useState(1);
   const [name, setName] = useState("");

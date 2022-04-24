@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 //styling
 import styled from "styled-components";
 //icons
@@ -13,8 +13,11 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 //components
 import DarkMode from "../components/darkMode";
+//context
+import modeContext from "../modeContext";
 
-const Nav = ({ darkModeState, setDarkModeState }) => {
+const Nav = () => {
+  const { darkModeState, setDarkModeState } = useContext(modeContext);
   const [openMenu, SetOpenMenu] = useState(false);
   //get the current location
   const location = useLocation();

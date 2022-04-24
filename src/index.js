@@ -4,11 +4,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 //router
 import { BrowserRouter } from "react-router-dom";
+//context
+import { ModeProvider } from "./modeContext";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <ModeProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ModeProvider>,
   document.getElementById("root")
 );
 

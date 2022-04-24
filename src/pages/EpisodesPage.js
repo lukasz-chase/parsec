@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 //styling
 import styled from "styled-components";
 //url
 import { episodesUrl } from "../api";
 //axios
 import axios from "axios";
-//components
-import Character from "../components/character";
 //icon
 import SearchIcon from "@material-ui/icons/Search";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 //input
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 //material ui
 import Pagination from "@material-ui/lab/Pagination";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
+//components
+import EpisodeCard from "../components/episodeCard";
+//context
+import modeContext from "../modeContext";
 
-const EpisodesPage = ({ darkModeState }) => {
+const EpisodesPage = () => {
+  const { darkModeState } = useContext(modeContext);
   //state
   const [episodes, setEpisodes] = useState(null);
   const [page, setPage] = useState(1);
@@ -96,58 +95,26 @@ const EpisodesPage = ({ darkModeState }) => {
         )}
       </div>
       <div className="EpisodesPage-article">
-        {episodes && (
-          <div className="episodesList">
-            {episodes.results.map((episode) => (
-              <Accordion
-                key={episode.id}
-                className="accordion"
-                style={{
-                  backgroundColor: darkModeState
-                    ? "rgba(0, 0, 0, 0.8)"
-                    : "rgba(0, 0, 0, 0.5)",
-                  color: darkModeState ? "rgba(255, 255, 255, 0.568)" : "white",
-                }}
-              >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon color="primary" />}
-                >
-                  <span className="episodeNumber">{episode.episode}</span>
-                  {episode.name}
-                </AccordionSummary>
-                <AccordionDetails className="episodes-info">
-                  <div className="date">
-                    Air Date: <span>{episode.air_date}</span>
-                  </div>
-                  <div className="characters">
-                    <div className="character-header">
-                      Characters that performed in this episode:
-                    </div>
-
-                    {episode.characters
-                      .map((character) => (
-                        <span key={character.split("/", 6)[5]}>
-                          <Character id={character.split("/", 6)[5]} />
-                        </span>
-                      ))
-                      .reduce((prev, curr) => [prev, ", ", curr])}
-                  </div>
-                </AccordionDetails>
-              </Accordion>
-            ))}
-          </div>
-        )}
+        <div className="episodesList">
+          {episodes?.results?.map((episode) => (
+            <EpisodeCard
+              key={episode.id}
+              id={episode.id}
+              darkModeState={darkModeState}
+              episode={episode.episode}
+              name={episode.name}
+              airDate={episode.air_date}
+              characters={episode.characters}
+            />
+          ))}
+        </div>
       </div>
-      {episodes ? (
-        <Pagination
-          count={episodes.info.pages}
-          color="primary"
-          className="choosePage"
-          onChange={pagesHandler}
-        />
-      ) : (
-        ""
-      )}
+      <Pagination
+        count={episodes?.info?.pages}
+        color="primary"
+        className="choosePage"
+        onChange={pagesHandler}
+      />
     </EpisodesPageComponent>
   );
 };

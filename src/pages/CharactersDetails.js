@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 //import router
 import { useLocation } from "react-router-dom";
 //axios
@@ -12,8 +12,11 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Button from "@material-ui/core/Button";
 //link
 import { useHistory } from "react-router-dom";
+//context
+import modeContext from "../modeContext";
 
-const CharactersDetails = ({ darkModeState }) => {
+const CharactersDetails = () => {
+  const { darkModeState } = useContext(modeContext);
   //state
   const [data, setData] = useState(null);
   //get the current location

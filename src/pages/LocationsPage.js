@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 //url
 import { locationsUrl } from "../api";
 //styling
 import styled from "styled-components";
 //components
 import WholePageComponent from "../components/WholePageComponent";
+//context
+import modeContext from "../modeContext";
 
-const LocationsPage = ({ darkModeState }) => {
+const LocationsPage = () => {
+  const { darkModeState } = useContext(modeContext);
   const locations = true;
 
   return (
