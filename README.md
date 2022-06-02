@@ -1,4 +1,4 @@
-check it live on: https://parsec.vercel.app/
+check it live on: https://parsec2.netlify.app/
 
 To run this app on your computer follow these steps:
 
