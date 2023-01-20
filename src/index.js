@@ -6,11 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 //context
 import { ModeProvider } from "./modeContext";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 ReactDOM.render(
   <ModeProvider>
     <BrowserRouter>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </BrowserRouter>
   </ModeProvider>,
   document.getElementById("root")

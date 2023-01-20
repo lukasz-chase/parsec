@@ -10,7 +10,6 @@ import modeContext from "../modeContext";
 
 const LocationsPage = () => {
   const { darkModeState } = useContext(modeContext);
-  const locations = true;
 
   return (
     <LocationsPageComponent
@@ -20,7 +19,7 @@ const LocationsPage = () => {
         darkModeState={darkModeState}
         url={locationsUrl}
         item={"locations"}
-        locations={locations}
+        locations={true}
       />
     </LocationsPageComponent>
   );

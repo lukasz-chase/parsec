@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 //import router
 import { useLocation } from "react-router-dom";
-//axios
-import axios from "axios";
 //url
-import { specificUrl } from "../api";
+import { getLocation } from "../api";
 //styling
 import styled from "styled-components";
 //components
@@ -16,11 +14,10 @@ import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 //context
 import modeContext from "../modeContext";
+import { useQuery } from "@tanstack/react-query";
 
 const LocationDetails = () => {
   const { darkModeState } = useContext(modeContext);
-  //state
-  const [data, setData] = useState(null);
   const history = useHistory();
   const location = useLocation();
   const pathId =
@@ -28,10 +25,15 @@ const LocationDetails = () => {
     "/" +
     location.pathname.split("/", 3)[2];
 
-  //useEffect
-  useEffect(() => {
-    axios.get(specificUrl(pathId)).then((res) => setData(res.data));
-  }, [pathId]);
+  const query = useQuery({
+    queryKey: ["locations", pathId],
+    queryFn: () => getLocation(pathId),
+  });
+  if (query.status === "loading") return <h1>Loading...</h1>;
+  if (query.status === "error") {
+    return <h1>{JSON.stringify(query.error)}</h1>;
+  }
+  const { name, type, dimension, residents, created } = query.data;
   return (
     <LocationDetailsComponent
       style={{
@@ -48,36 +50,33 @@ const LocationDetails = () => {
       >
         Go Back
       </Button>
-
-      {data && (
-        <div className="LocationDetails-article">
-          <h1 className="header-text">{data.name}</h1>
-          <div className="location-details">
-            <div className="detail">
-              <b>Created:</b>
-              <span>{data.created}</span>
-            </div>
-            <div className="detail">
-              <b>Dimension:</b>
-              <span>{data.dimension}</span>
-            </div>
-            <div className="detail">
-              <b>Type:</b>
-              <span>{data.type}</span>
-            </div>
-            <div className="residents">
-              <b>Residents:</b>
-              {data.residents
-                .map((character) => (
-                  <span key={character.split("/", 6)[5]}>
-                    <Character id={character.split("/", 6)[5]} />
-                  </span>
-                ))
-                .reduce((prev, curr) => [prev, ", ", curr])}
-            </div>
+      <div className="LocationDetails-article">
+        <h1 className="header-text">{name}</h1>
+        <div className="location-details">
+          <div className="detail">
+            <b>Created:</b>
+            <span>{created}</span>
+          </div>
+          <div className="detail">
+            <b>Dimension:</b>
+            <span>{dimension}</span>
+          </div>
+          <div className="detail">
+            <b>Type:</b>
+            <span>{type}</span>
+          </div>
+          <div className="residents">
+            <b>Residents:</b>
+            {residents
+              .map((character) => (
+                <span key={character.split("/", 6)[5]}>
+                  <Character id={character.split("/", 6)[5]} />
+                </span>
+              ))
+              .reduce((prev, curr) => [prev, ", ", curr])}
           </div>
         </div>
-      )}
+      </div>
     </LocationDetailsComponent>
   );
 };

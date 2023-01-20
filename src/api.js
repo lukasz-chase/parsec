@@ -1,3 +1,6 @@
+//axios
+import axios from "axios";
+
 const baseUrl = "https://rickandmortyapi.com/api";
 //people url
 export const charactersUrl = (page, name, status) =>
@@ -10,3 +13,6 @@ export const episodesUrl = (page, name, episode) =>
   `${baseUrl}/episode/?page=${page}&name=${name}&episode=${episode}`;
 //specific url
 export const specificUrl = (item) => `${baseUrl}/${item}`;
+
+export const getLocation = (id) =>
+  axios.get(specificUrl(id)).then((res) => res.data);

@@ -16,21 +16,22 @@ import Pagination from "@material-ui/lab/Pagination";
 import EpisodeCard from "../components/episodeCard";
 //context
 import modeContext from "../modeContext";
+import { useQuery } from "@tanstack/react-query";
 
 const EpisodesPage = () => {
   const { darkModeState } = useContext(modeContext);
   //state
-  const [episodes, setEpisodes] = useState(null);
   const [page, setPage] = useState(1);
   const [name, setName] = useState("");
   const [episode, setEpisode] = useState("");
   const [textInput, setTextInput] = useState("");
-  //useEffect
-  useEffect(() => {
-    axios
-      .get(episodesUrl(page, name, episode))
-      .then((res) => setEpisodes(res.data));
-  }, [page, name, episode]);
+
+  const { data: episodes } = useQuery({
+    queryKey: ["episodes", { page }],
+    keepPreviousData: true,
+    queryFn: () =>
+      axios.get(episodesUrl(page, name, episode)).then((res) => res.data),
+  });
   //handlers
   //pagination handler
   const pagesHandler = (e, v) => {

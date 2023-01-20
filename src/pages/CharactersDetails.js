@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 //import router
 import { useLocation } from "react-router-dom";
 //axios
@@ -14,11 +14,10 @@ import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 //context
 import modeContext from "../modeContext";
+import { useQuery } from "@tanstack/react-query";
 
 const CharactersDetails = () => {
   const { darkModeState } = useContext(modeContext);
-  //state
-  const [data, setData] = useState(null);
   //get the current location
   const history = useHistory();
   const location = useLocation();
@@ -26,10 +25,24 @@ const CharactersDetails = () => {
     location.pathname.split("/", 3)[1] +
     "/" +
     location.pathname.split("/", 3)[2];
-  //useEffect
-  useEffect(() => {
-    axios.get(specificUrl(pathId)).then((res) => setData(res.data));
-  }, [pathId]);
+
+  const query = useQuery({
+    queryKey: ["characters", pathId],
+    queryFn: () => axios.get(specificUrl(pathId)).then((res) => res.data),
+  });
+  if (query.status === "loading") return <h1>Loading...</h1>;
+  if (query.status === "error") {
+    return <h1>{JSON.stringify(query.error)}</h1>;
+  }
+  const {
+    image,
+    name,
+    species,
+    status,
+    origin,
+    location: localization,
+    type,
+  } = query.data;
   return (
     <DetailsPageComponent
       style={{
@@ -48,42 +61,39 @@ const CharactersDetails = () => {
       >
         Go Back
       </Button>
-
-      {data && (
-        <div className="characters-article">
-          <div className="characters-img">
-            <img src={data.image} alt={data.name} />
-          </div>
-          <div className="characters-info">
-            <div className="detail">
-              <b>Name:</b>
-              <span>{data.name}</span>
-            </div>
-            <div className="detail">
-              <b>Species:</b>
-              <span>{data.species}</span>
-            </div>
-            <div className="detail">
-              <b>Status:</b>
-              <span>{data.status}</span>
-            </div>
-            <div className="detail">
-              <b>Origin:</b>
-              <span>{data.origin.name}</span>
-            </div>
-            <div className="detail">
-              <b>Last Seen:</b>
-              <span>{data.location.name}</span>
-            </div>
-            {data.type && (
-              <div className="detail">
-                <b>Type:</b>
-                <span>{data.type}</span>
-              </div>
-            )}
-          </div>
+      <div className="characters-article">
+        <div className="characters-img">
+          <img src={image} alt={name} />
         </div>
-      )}
+        <div className="characters-info">
+          <div className="detail">
+            <b>Name:</b>
+            <span>{name}</span>
+          </div>
+          <div className="detail">
+            <b>Species:</b>
+            <span>{species}</span>
+          </div>
+          <div className="detail">
+            <b>Status:</b>
+            <span>{status}</span>
+          </div>
+          <div className="detail">
+            <b>Origin:</b>
+            <span>{origin.name}</span>
+          </div>
+          <div className="detail">
+            <b>Last Seen:</b>
+            <span>{localization.name}</span>
+          </div>
+          {type && (
+            <div className="detail">
+              <b>Type:</b>
+              <span>{type}</span>
+            </div>
+          )}
+        </div>
+      </div>
     </DetailsPageComponent>
   );
 };

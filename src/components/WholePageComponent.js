@@ -17,21 +17,22 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 //context
 import modeContext from "../modeContext";
-
+import { useQuery } from "@tanstack/react-query";
 const WholePageComponent = ({ url, item, characters, locations }) => {
   //state
   const { darkModeState } = useContext(modeContext);
-  const [data, setData] = useState(null);
   const [page, setPage] = useState(1);
   const [name, setName] = useState("");
   const [textInput, setTextInput] = useState("");
   const [status, setStatus] = useState("");
   //ref
   const selectRef = useRef(null);
-  //useEffect
-  useEffect(() => {
-    axios.get(url(page, name, status)).then((res) => setData(res.data));
-  }, [url, page, name, status]);
+
+  const { data } = useQuery({
+    queryKey: [name, { page }],
+    keepPreviousData: true,
+    queryFn: () => axios.get(url(page, name, status)).then((res) => res.data),
+  });
   //handlers
   //pagination handler
   const pagesHandler = (e, v) => {
